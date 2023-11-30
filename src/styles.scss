@@ -1,1 +1,94 @@
 /* You can add global styles to this file, and also import other style files */
+// @import 'node_modules/ngx-toastr/toastr';
+
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+*{
+    box-sizing: border-box;
+    transition: .5s;
+}
+@media screen and (max-width: 991px) and (min-width: 600px){
+    div.global-content-padding{
+        padding-top: 0px;
+    }
+    div.global-content-padding{
+        padding-top: 131px;
+    }
+    .carousel-inner .carousel-item img{
+        height: 215px;
+    }
+    .row .productImg img{
+        height: 170px;
+    }
+}
+@media screen and (max-width: 700px){
+    div.global-content-padding{
+        padding-top: 0px;
+    }
+    .carousel-inner .carousel-item img{
+        // height: 220px !important;
+        height: calc(100vh - 460px) !important;
+    }
+    .row .productImg{
+        padding: 5px;
+    }
+}
+
+  // for iphone view
+  @media only screen 
+    and (min-device-width: 365px) 
+    and (max-device-width: 480px)
+    and (-webkit-min-device-pixel-ratio: 2) {
+      .carousel-inner .carousel-item img{
+        height: calc(100vh - 490px) !important;
+    }
+  }
+
+.bg-pink{
+    background-color :#cd0bff;
+}
+.Content{
+    padding-bottom: 50px !important;
+    padding-top: 5px !important;
+}
+.global-content-padding{
+    padding-top: 123px;
+}
+.carousel-item img{
+    height: calc(100vh - 410px);
+}
+.container {
+    position: relative;
+    padding: 0px;
+}
+// for dashboard small img show
+.logo-photo{
+    height: 80px;
+    width: 120px;
+    margin: 7px;
+    border-radius: 10px;
+}
+
+// for dashboard delete view
+.delete-show{
+    background-color: whitesmoke;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 496px;
+    margin-top: 148px;
+    width: 98%;
+    z-index: 2;
+    border-radius: 5px;
+    left: 10px;
+    top: 5px;
+}
+.check-data{
+    width: 100%;
+}
+.delete-show .card{
+    max-width: 100%;
+    text-align: center;
+    padding: 10px;
+}

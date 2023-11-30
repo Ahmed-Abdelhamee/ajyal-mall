@@ -1,0 +1,197 @@
+
+
+*{
+    box-sizing: border-box;
+    transition: all .5s;
+}
+@media (min-width: 992px){
+    .navbar-expand-lg {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        padding: 3px 10px;
+    }
+}
+@media screen and (max-width:991px) {
+    .header nav.navbar{
+        justify-content: space-between;
+    }
+    .navbar-brand img{
+        height: 106px;
+    }
+    div.col-12 .navbar-light{
+        padding-left: 1%;
+        padding-right: 1%;
+    /* padding-bottom: 15px;*/
+    }
+    .navbar-light .container{
+        max-width: 100%;
+    }
+    .container .navbar-collapse{
+        margin-top: 8px;
+        // margin-bottom: 20px;
+        padding-bottom: 4px;
+    }
+    .navbar-nav .nav-item{
+        border: none;
+        padding: 0px;
+    }
+    .nav-item .nav-link{
+        text-align: left;
+        font-size: 11px;
+    }
+    .navbar-nav .nav-item{
+        border-bottom: 1px solid #efefefa3;
+        display: block;
+    }
+    .navbar-nav .nav-item:first-of-type.active{
+        padding-top: 3px;
+        border-top-right-radius: 12px;
+        border-top-left-radius: 12px;
+    }
+    .navbar-nav .nav-item:last-of-type{
+        border: none;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    .nav-item.dropdown{
+        padding: 0px 5px !important;
+        padding-bottom: 5px !important;
+    }
+    .nav-item.dropdown .nav-link{
+        width: 100%;
+        padding-left: 0px;
+        padding-right: 5px;
+    }
+    .nav-item.dropdown .dropdown-menu {
+        position: relative;
+        min-width: 100%;
+        border-radius: 14px;
+        border: none;
+    }
+    .dropdown-menu li .dropdown-item{
+        font-size: 11px;
+        padding: 8px;
+        padding-left: 5px;
+        border-radius: 0px;
+    }
+    .dropdown-menu li .frist-dropdown-item{
+        border-top: 1px solid #efefefa3;
+    }
+    .dropdown-menu li .last-dropdown-item{
+        border-bottom: none;
+        border-bottom-right-radius: 6px;
+        border-bottom-left-radius: 6px;
+    }
+}
+@media screen and (max-width: 700px){
+    .col-12.header{
+        position: relative;
+    }
+    .navbar-light .container{
+        max-width: 100%;
+    }
+}
+
+.header{
+    position: fixed;
+    z-index: 2;
+    // box-shadow: 0px 0px 10px;
+    background-color: white  !important;
+}
+.navbar{
+    display: flex;
+    justify-content: space-evenly;
+}
+.logo{
+    height: 106px;
+    padding: 10px;
+    padding-top: 0px;
+}
+.navbar-toggler{
+    margin-right: 5px;
+    border: none;
+    margin-top: 26px;
+}
+.navbar-toggler:focus{
+    box-shadow: none;
+}
+.navbar-collapse {
+    flex-grow: 0;
+    border-radius: 14px;
+    margin-top: 11px;
+}
+.nav-item{
+    padding: 2px;
+    color: white;
+    font-weight: 400;
+    border-right: 1.5px solid deeppink;
+    display: flex;
+    align-items: center;
+}
+.nav-item:hover{
+    background-color: black;
+}
+.active{
+    background-color: black !important;
+    border-radius: 5px;
+    border: none;
+}
+.nav-item:last-of-type{
+    border: none;
+}
+.nav-item:first-of-type:hover{
+    border-top-left-radius: 14px;
+    border-bottom-left-radius: 14px;
+}
+.nav-link{
+    color: white;
+    font-weight: 400;
+    margin: 0px 6px;
+    font-size:11.5px;
+    text-align: center;
+    cursor: pointer;
+}
+a{
+    text-transform: uppercase;
+}
+.dropdown{
+    border-radius: 14px;
+}
+.dropdown:hover{
+    background-color: rgb(221 221 221);
+    background-color: #cd0bff;
+}
+.dropdown .nav-link{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.dropdown-menu{
+    padding: 0px;
+    width: fit-content;
+    min-width: fit-content;
+}
+.dropdown-menu .dropdown-item{
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border-bottom: 1px solid rgba(239, 239, 239, 0.6392156863);
+    font-size: 12px;
+    cursor: pointer;
+    background-color: #cd0bff;
+
+}
+
+.dropdown-menu .dropdown-item:focus,
+.dropdown-menu .dropdown-item:hover{
+    background-color: #7c009b;
+}
+.drop-item-edit{
+    border-radius: 0% !important;
+}
+
+
+// code for changing the the color of the bars in the toggler button
+.navbar-toggler-icon{
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba( 0, 0, 0)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+

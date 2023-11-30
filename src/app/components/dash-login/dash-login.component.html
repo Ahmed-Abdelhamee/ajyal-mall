@@ -1,0 +1,19 @@
+
+<div class="col-12 d-flex justify-content-center align-items-center dashlogin">
+    <form class="col-lg-4 card p-3" [formGroup]="login" (submit)="submit()">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label" >Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" formControlName="email" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" formControlName="pass">
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">login</button>
+        </div>
+        <div class="col-12">
+          <p class="alert alert-danger" *ngIf="error"> invalid data for login</p>
+        </div>
+      </form>
+</div>

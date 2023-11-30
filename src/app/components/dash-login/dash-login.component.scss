@@ -1,0 +1,25 @@
+
+
+@media screen and (max-width: 991px){
+    .col-lg-4{
+        width: 100%;
+        margin: 20px;
+    }    
+    .col-12 .card{
+        margin-top: -200px;
+    }
+}
+.dashlogin{
+    height: 100vh;
+    justify-content: center;
+}
+form{
+    height: fit-content;
+}
+.alert-danger{
+    margin-top: 20px;
+    padding: 8px;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: 500;
+}

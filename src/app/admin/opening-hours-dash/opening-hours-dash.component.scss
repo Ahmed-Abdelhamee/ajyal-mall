@@ -1,0 +1,66 @@
+*{
+    padding: 5px;
+}
+
+label{
+    text-transform: capitalize;
+}
+.card{
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+.part-title{
+    text-align: center;
+    font-size: 15px;
+    margin: 5px;
+    background-color: aliceblue;
+    padding: 15px 30px;
+    width: fit-content;
+    border-radius: 0px 25px;
+    text-transform: capitalize;
+    color: cadetblue;
+}
+.btn-secondary{
+    padding:  5px 13px;
+}
+.imgView{
+    height: 100px;
+    width: 150px;
+    border-radius: 13px;
+}
+.table-div{
+    height: 496px;
+    overflow: auto;
+    border: 1px solid lightgray;
+}
+.item{
+    padding-top: 35px;
+}
+.btn{
+    font-size: 13px;
+    color: white;
+    text-transform: capitalize;
+    margin: 2px;
+}
+.part-view{
+    text-align: center;
+    color: #7f8ea5;
+    font-size: 15px;
+    text-transform: capitalize;
+    margin-bottom: 0px;
+    font-weight: 600;
+}
+
+
+.check-data .card{
+    border: none;
+    margin-bottom: 0px;
+}
+.check-data .card .imgView{
+    padding: 0px;
+    padding-top: 5px;
+}
+.check-data .card p{
+    padding: 0%;
+    margin-bottom: 3px;
+}

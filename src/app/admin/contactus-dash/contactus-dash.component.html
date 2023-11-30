@@ -1,0 +1,12 @@
+<div class="col-12">
+    <div class="row">
+        <div class="col-sm-4 card m-1" *ngFor="let item of feedback">
+            <p><span>First Name : </span>{{item.Fname}}</p>
+            <p><span>Last Name : </span>{{item.Lname}}</p>
+            <p><span>Email : </span>{{item.email}}</p>
+            <p><span>Phone : </span>{{item.phone}}</p>
+            <p><span>id : </span>{{item.id}}</p>
+            <textarea name="msg" id="msg" cols="30" rows="5" [value]="item.msg"></textarea>
+        </div>
+    </div>
+</div>
