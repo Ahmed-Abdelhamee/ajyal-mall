@@ -9,7 +9,8 @@ import { DataService } from 'src/app/services/data.service';
 @Component({
   selector: 'app-home-dash',
   templateUrl: './home-dash.component.html',
-  styleUrls: ['./home-dash.component.scss']
+  // adding a css file to a component => Keep in mind that the URL should be relative to the component folder.
+  styleUrls: ['./home-dash.component.scss',"../z-admin-style/admin-style.css"]
 })
 export class HomeDashComponent implements OnInit {
 // data variables

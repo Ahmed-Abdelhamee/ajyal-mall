@@ -33,6 +33,7 @@ import { ShoesComponent } from './components/shoes/shoes.component';
 import { StoreLocatoinComponent } from './components/store-locatoin/store-locatoin.component';
 import { AdminModule } from './admin/admin.module';
 import { RouterModule } from '@angular/router';
+import { DirDirective } from './directives/dir.directive';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { RouterModule } from '@angular/router';
     OpeningHoursComponent,
     PerfumesComponent,
     ShoesComponent,
-    StoreLocatoinComponent
+    StoreLocatoinComponent,
+    DirDirective
   ],
   imports: [
     RouterModule,

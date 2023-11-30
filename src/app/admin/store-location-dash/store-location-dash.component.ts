@@ -8,7 +8,8 @@ import { DataService } from 'src/app/services/data.service';
 @Component({
   selector: 'app-store-location-dash',
   templateUrl: './store-location-dash.component.html',
-  styleUrls: ['./store-location-dash.component.scss']
+  // adding a css file to a component => Keep in mind that the URL should be relative to the component folder.
+  styleUrls: ['./store-location-dash.component.scss',"../z-admin-style/admin-style.css"]
 })
 export class StoreLocationDashComponent implements OnInit {
 
@@ -122,7 +123,7 @@ export class StoreLocationDashComponent implements OnInit {
     this.uploading="uploadingstoreLocationCarasoul";
     const file=event.target.files[0];
     if(file){
-      const path=`alBairaq/${file.name}${new Date().getTime()}`; // we make name of file in firebase storage 
+      const path=`ajyal/${file.name}${new Date().getTime()}`; // we make name of file in firebase storage 
       const uploadTask = await this.firestorage.upload(path,file)
       const url =await uploadTask.ref.getDownloadURL()
       this.CarasoulstoreLocationURL=url;

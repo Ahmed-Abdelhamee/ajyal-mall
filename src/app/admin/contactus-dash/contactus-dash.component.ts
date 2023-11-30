@@ -5,7 +5,8 @@ import { DataService } from 'src/app/services/data.service';
 @Component({
   selector: 'app-contactus-dash',
   templateUrl: './contactus-dash.component.html',
-  styleUrls: ['./contactus-dash.component.scss']
+  // adding a css file to a component => Keep in mind that the URL should be relative to the component folder.
+  styleUrls: ['./contactus-dash.component.scss',"../z-admin-style/admin-style.css"]
 })
 export class ContactusDashComponent implements OnInit {
 

@@ -2,17 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Database } from 'firebase/database';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-accessoires-dash',
   templateUrl: './accessoires-dash.component.html',
-  styleUrls: ['./accessoires-dash.component.scss']
+  // adding a css file to a component => Keep in mind that the URL should be relative to the component folder.
+  styleUrls: ['./accessoires-dash.component.scss',"../z-admin-style/admin-style.css"]
 })
 export class AccessoiresDashComponent implements OnInit {
-
-  
   // data variables
   parttext:string="";
   productURL:string="";
@@ -40,7 +38,6 @@ export class AccessoiresDashComponent implements OnInit {
     id:[new Date().getTime()]
   })
 
-
   constructor(route:Router,private fb:FormBuilder , private dataServ:DataService , private firestorage:AngularFireStorage) { 
     if(sessionStorage.getItem("Admin")!="AdminisTrue"){
       route.navigate(["/admin/dash-login"])
@@ -53,8 +50,7 @@ export class AccessoiresDashComponent implements OnInit {
 
 
 // ------------------------------------- send data to add to database -----------------------------------
-  
-  // ------------- Carasoul function for accessories -----------------
+  // ---- Carasoul function for accessories ----
   sendCarasoul(edit_control:string,sectionViewController:string){
     this.accessoriesImg.patchValue({
       img:this.CarasoulURL,
@@ -80,8 +76,7 @@ export class AccessoiresDashComponent implements OnInit {
     }
     this.uploadingCarasoul="null";
   }
-  
-  // ------------- product function for accessories -----------------
+  // -------- product function for accessories ------
   sendProducts(edit_control:string,sectionViewController:string){
     this.accessoriesImg.patchValue({
       img:this.productURL
@@ -114,7 +109,6 @@ export class AccessoiresDashComponent implements OnInit {
     }
     this.uploadingImg="null";
   }
-
   // ------------------------------------- open part ------------------------------------------
   openPart(part:string,type:string,action:string){
     this.parttext=`the show of ${type}`
@@ -133,7 +127,6 @@ export class AccessoiresDashComponent implements OnInit {
       url:""
     })
   }
-
   // ------------------------------------ show data table -------------------------------------
   showdata(type:string){
     this.datalist=[]
@@ -152,7 +145,6 @@ export class AccessoiresDashComponent implements OnInit {
       })
     }
   }
-
   // --------------------------------------- update part ---------------------------------------
   update(item:any,sectionViewController:string){
     this.updateObject=item;
@@ -167,7 +159,6 @@ export class AccessoiresDashComponent implements OnInit {
         this.sectionViewController=sectionViewController
       }
   }
-
   // --------------------------------------- delete part ---------------------------------------
   DeleteSure(item:any){
     this.deletedObject=item;
@@ -207,30 +198,27 @@ export class AccessoiresDashComponent implements OnInit {
       })
     }
   }
-
-
   // --------------------------------------------  upload photos -----------------------------------------
-
-  // funcion to upload img file and get image url   ---- for accessories carasoul -------
+  // funcion to upload img file and get image url   -----------for accessories carasoul --------------
   async uploadCarasoul(event:any,edit_control:string){
     this.edit_control=edit_control
     this.uploadingCarasoul="uploadingCarasoul";
     const file=event.target.files[0];
     if(file){
-      const path=`alBairaq/${file.name}${new Date().getTime()}`; // we make name of file in firebase storage 
+      const path=`ajyal/${file.name}${new Date().getTime()}`; // we make name of file in firebase storage 
       const uploadTask = await this.firestorage.upload(path,file)
       const url =await uploadTask.ref.getDownloadURL()
       this.CarasoulURL=url;
     }
     this.uploadingCarasoul="CarasoulUploaded";
   }
-  // funcion to upload img file and get image url ---- for product -------
+  // funcion to upload img file and get image url ----------- for product --------------
   async uploadImg(event:any,edit_control:string){
     this.edit_control=edit_control
     this.uploadingImg="uploadingImg";
     const file=event.target.files[0];
     if(file){
-      const path=`alBairaq/${file.name}${new Date().getTime()}`; // we make name of file in firebase storage 
+      const path=`ajyal/${file.name}${new Date().getTime()}`; // we make name of file in firebase storage 
       const uploadTask = await this.firestorage.upload(path,file)
       const url =await uploadTask.ref.getDownloadURL()
       this.productURL=url;

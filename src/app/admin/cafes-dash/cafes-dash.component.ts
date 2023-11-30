@@ -7,10 +7,10 @@ import { DataService } from 'src/app/services/data.service';
 @Component({
   selector: 'app-cafes-dash',
   templateUrl: './cafes-dash.component.html',
-  styleUrls: ['./cafes-dash.component.scss']
+  // adding a css file to a component => Keep in mind that the URL should be relative to the component folder.
+  styleUrls: ['./cafes-dash.component.scss',"../z-admin-style/admin-style.css"]
 })
 export class CafesDashComponent implements OnInit {
-
 
   // data variables
   parttext:string="";
@@ -214,7 +214,7 @@ export class CafesDashComponent implements OnInit {
     this.uploadingCarasoul="uploadingCarasoul";
     const file=event.target.files[0];
     if(file){
-      const path=`alBairaq/${file.name}${new Date().getTime()}`; // we make name of file in firebase storage 
+      const path=`ajyal/${file.name}${new Date().getTime()}`; // we make name of file in firebase storage 
       const uploadTask = await this.firestorage.upload(path,file)
       const url =await uploadTask.ref.getDownloadURL()
       this.CarasoulURL=url;
@@ -227,7 +227,7 @@ export class CafesDashComponent implements OnInit {
     this.uploadingImg="uploadingImg";
     const file=event.target.files[0];
     if(file){
-      const path=`alBairaq/${file.name}${new Date().getTime()}`; // we make name of file in firebase storage 
+      const path=`ajyal/${file.name}${new Date().getTime()}`; // we make name of file in firebase storage 
       const uploadTask = await this.firestorage.upload(path,file)
       const url =await uploadTask.ref.getDownloadURL()
       this.productURL=url;

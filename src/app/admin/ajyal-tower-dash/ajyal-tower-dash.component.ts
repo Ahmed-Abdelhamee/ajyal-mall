@@ -3,13 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Database } from 'firebase/database';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-ajyal-tower-dash',
   templateUrl: './ajyal-tower-dash.component.html',
-  styleUrls: ['./ajyal-tower-dash.component.scss']
+  // adding a css file to a component => Keep in mind that the URL should be relative to the component folder.
+  styleUrls: ['./ajyal-tower-dash.component.scss',"../z-admin-style/admin-style.css"]
 })
 export class AjyalTowerDashComponent implements OnInit {
 
@@ -215,7 +215,7 @@ export class AjyalTowerDashComponent implements OnInit {
     this.uploadingCarasoul="uploadingCarasoul";
     const file=event.target.files[0];
     if(file){
-      const path=`alBairaq/${file.name}${new Date().getTime()}`; // we make name of file in firebase storage 
+      const path=`ajyal/${file.name}${new Date().getTime()}`; // we make name of file in firebase storage 
       const uploadTask = await this.firestorage.upload(path,file)
       const url =await uploadTask.ref.getDownloadURL()
       this.CarasoulURL=url;
@@ -228,7 +228,7 @@ export class AjyalTowerDashComponent implements OnInit {
     this.uploadingImg="uploadingImg";
     const file=event.target.files[0];
     if(file){
-      const path=`alBairaq/${file.name}${new Date().getTime()}`; // we make name of file in firebase storage 
+      const path=`ajyal/${file.name}${new Date().getTime()}`; // we make name of file in firebase storage 
       const uploadTask = await this.firestorage.upload(path,file)
       const url =await uploadTask.ref.getDownloadURL()
       this.productURL=url;

@@ -3,13 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Database } from 'firebase/database';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-about-dash',
   templateUrl: './about-dash.component.html',
-  styleUrls: ['./about-dash.component.scss']
+  // adding a css file to a component => Keep in mind that the URL should be relative to the component folder.
+  styleUrls: ['./about-dash.component.scss',"../z-admin-style/admin-style.css"]
 })
 export class AboutDashComponent implements OnInit {
   datalist: any[] = [];
@@ -43,7 +43,7 @@ export class AboutDashComponent implements OnInit {
   ngOnInit(): void {
     this.openPart('table data','carsouel','');
   }
- // open the view for data special control 
+ // ----------------------------- open the view for data special control -----------------------------
  openPart(part:string,type:string,action:string){
     this.partViewController=part;
     this.sectionViewController=action;
@@ -62,7 +62,6 @@ export class AboutDashComponent implements OnInit {
       paragraph:""
     })
   }
-
   // ----------------------------- Carasoul function for About -----------------------------
   sendCarasoulAbout(){
     this.homeImg.patchValue({
@@ -86,7 +85,6 @@ export class AboutDashComponent implements OnInit {
       }
     this.uploading="null";
   }
-
   // ----------------------------- Data function for About -----------------------------
   sendAboutData(){
     if(this.About.valid){
@@ -106,7 +104,6 @@ export class AboutDashComponent implements OnInit {
       }
     }
   }
-
   //----------------------------- for view the data in table -----------------------------
   showdata(type:string){
     this.datalist=[]
@@ -124,7 +121,6 @@ export class AboutDashComponent implements OnInit {
       })
     }
   }
-
   // ----------------------------- update part -----------------------------
   update(item:any,sectionViewController:string){
     this.updateObject=item;
@@ -180,13 +176,12 @@ export class AboutDashComponent implements OnInit {
       })
     }
   }
-
   // -------------- funcion to upload img file and get image url ---- for About Product --------------
   async uploadAboutCarasoul(event:any){
     this.uploading="uploadingAboutCarasoul";
     const file=event.target.files[0];
     if(file){
-      const path=`alBairaq/${file.name}${new Date().getTime()}`; // we make name of file in firebase storage 
+      const path=`ajyal/${file.name}${new Date().getTime()}`; // we make name of file in firebase storage 
       const uploadTask = await this.firestorage.upload(path,file)
       const url =await uploadTask.ref.getDownloadURL()
       this.CarasoulAboutURL=url;
