@@ -16,10 +16,13 @@ export class DataService {
   constructor( private database:Database , private http:HttpClient) { 
     this.databaseURL=this.database.app.options.databaseURL;
   }
-    
+     // get Home data
+  getData(data:string):Observable<homePhoto[]>{
+    return this.http.get<homePhoto[]>(`${this.databaseURL}/${data}.json`)
+  }
   // get Home data
   getCarsoul():Observable<homePhoto[]>{
-    return this.http.get<homePhoto[]>(`${this.databaseURL}/carasoul.json`)
+    return this.http.get<homePhoto[]>(`${this.databaseURL}/carsouel.json`)
   }
   gethomeImages():Observable<homePhoto[]>{
     return this.http.get<homePhoto[]>(`${this.databaseURL}/products.json`)

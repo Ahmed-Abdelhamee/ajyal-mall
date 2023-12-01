@@ -18,7 +18,7 @@ parttext:string="";
 databaseURL:any="";
 productURL:string="";
 CarasoulURL:string="";
-datalist:any[]=[];
+dataType:string="";
 // variables for control the view
 uploadingImg:string="null"; // to make an alert for uploading image
 uploadingCarasoul:string="null"; // to make an alert for uploading image
@@ -49,7 +49,7 @@ constructor(private route:Router,private fb:FormBuilder , private dataServ:DataS
 }
 
 ngOnInit(): void {
-  this.openPart('table data','home-carsouel','')
+  this.openPart('table data','carsouel','')
 }
 
 
@@ -70,20 +70,7 @@ openPart(part:string,type:string,action:string){
 
 // ------------------------------------ show data table -------------------------------------
 showdata(type:string){
-  this.datalist=[]
-  if(type=="home-carsouel"){
-    this.dataServ.getCarsoul().subscribe(data=>{
-      for (const key in data) {
-        this.datalist.push(data[key])
-      }
-    })
-  }else  if(type=="home-products"){
-    this.dataServ.gethomeImages().subscribe(data=>{
-      for (const key in data) {
-        this.datalist.push(data[key])
-      }
-    })
-  }
+  this.dataType=type;
 }
 
 // ------------------------------------- send data to add to database -----------------------------------
@@ -93,19 +80,19 @@ sendCarasoul(edit_control:string,sectionViewController:string){
     img:this.CarasoulURL,
   })
 // ---- add carasoul ----
-  if(edit_control=="home-carsouel" && sectionViewController =="add")
+  if(edit_control=="carsouel" && sectionViewController =="add")
   {
-    this.dataServ.create(this.homeImg.value,"carasoul","add");
+    this.dataServ.create(this.homeImg.value,"carsouel","add");
   }
 // ---- edit carasoul ----
-  else if(edit_control=="home-carsouel" && sectionViewController =="edit"){
+  else if(edit_control=="carsouel" && sectionViewController =="edit"){
     this.dataServ.getCarsoul().subscribe(data=>{
       for (const key in data) {
         if(this.updateObject.id==data[key].id){
           this.homeImg.patchValue({
             id:Number(this.updateObject.id)
           })
-          this.dataServ.create(this.homeImg.value,"carasoul",key);
+          this.dataServ.create(this.homeImg.value,"carsouel",key);
           break;
         }
       }
@@ -119,10 +106,10 @@ sendProducts(edit_control:string,sectionViewController:string){
   this.homeImg.patchValue({
     img:this.productURL
   })
-  if(edit_control=="home-products" && sectionViewController =="add"){
+  if(edit_control=="products" && sectionViewController =="add"){
     this.dataServ.create(this.homeImg.value,"products","add");
   }
-  else if(edit_control=="home-products" && sectionViewController =="edit"){
+  else if(edit_control=="products" && sectionViewController =="edit"){
     this.dataServ.gethomeImages().subscribe(data=>{
       this.homeImg.patchValue({
         id:Number(this.updateObject.id)
@@ -141,10 +128,10 @@ sendProducts(edit_control:string,sectionViewController:string){
 // --------------------------------------- update part ---------------------------------------
 update(item:any,sectionViewController:string){
   this.updateObject=item;
-  if(this.edit_control=='home-carsouel' && sectionViewController=='edit')
+  if(this.edit_control=='carsouel' && sectionViewController=='edit')
     {
       this.sectionViewController=sectionViewController
-    } else if(this.edit_control=='home-products' && sectionViewController=='edit')
+    } else if(this.edit_control=='products' && sectionViewController=='edit')
     {
       this.sectionViewController=sectionViewController
     }
@@ -164,19 +151,19 @@ cancel_delete(){
 }
 deleteItem(item:any,sectionViewController:string){
 //----------- delete carasoul -----------
-  if(this.edit_control=='home-carsouel' && sectionViewController=='delete')
+  if(this.edit_control=='carsouel' && sectionViewController=='delete')
   {
     this.sectionViewController=sectionViewController;
     this.dataServ.getCarsoul().subscribe(data=>{
       for (const key in data) {
         if(item.id==data[key].id){
-          this.dataServ.delete("carasoul",key);
+          this.dataServ.delete("carsouel",key);
           break;
         }
       }
     })
 //------------- delete content -------------
-  } else if(this.edit_control=='home-products' && sectionViewController=='delete') {
+  } else if(this.edit_control=='products' && sectionViewController=='delete') {
     this.sectionViewController=sectionViewController;
     this.dataServ.gethomeImages().subscribe(data=>{
       for (const key in data) {

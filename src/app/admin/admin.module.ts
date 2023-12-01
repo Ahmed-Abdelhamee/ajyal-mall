@@ -18,6 +18,7 @@ import { ShoesDashComponent } from './shoes-dash/shoes-dash.component';
 import { StoreLocationDashComponent } from './store-location-dash/store-location-dash.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AdminComponent } from './admin.component';
+import { ChildCompViewComponent } from './child-comp-view/child-comp-view.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { AdminComponent } from './admin.component';
     OpeningHoursDashComponent,
     PerfumesDashComponent,
     ShoesDashComponent,
-    StoreLocationDashComponent
+    StoreLocationDashComponent,
+    ChildCompViewComponent
   ],
   imports: [
     CommonModule,
