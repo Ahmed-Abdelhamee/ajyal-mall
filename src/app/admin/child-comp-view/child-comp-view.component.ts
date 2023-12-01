@@ -20,7 +20,8 @@ export class ChildCompViewComponent implements OnInit , OnChanges {
   
   ngOnChanges(): void {
     this.parttext=`the show of ${this.data}`
-    this.datalist=[]
+    this.datalist=[];
+    this.datalist=[];
       this.dataServ.getData(this.data).subscribe(data=>{
         for (const key in data) {
           this.datalist.push(data[key])
