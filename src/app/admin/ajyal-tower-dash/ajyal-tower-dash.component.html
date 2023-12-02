@@ -26,7 +26,7 @@
         <div class="col-12 dash-content p-2" *ngIf="sectionViewController == 'add' || (sectionViewController== 'edit' && edit_control=='ajyalTower-carsouel')">
           <!-- carsouel form -->
           <form [formGroup]="ajyalTowerImg" class="card p-2" (ngSubmit)="sendCarasoul(edit_control,sectionViewController)" >
-              <label for="logo">ajyalTower Carasoul Image : </label>
+              <label for="logo">Ajyal Tower Carasoul Image : </label>
               <input type="file" accept=".jpg , .png , .jpeg , .webp "  class="form-control" id="logo"  (change)=" uploadCarasoul($event,'ajyalTower-carsouel')">
               <span class="text-warning" *ngIf="uploadingCarasoul == 'uploadingCarasoul' "> uploading ... </span> <span><img [src]="CarasoulURL" alt="" class="logo-photo"  *ngIf="uploadingCarasoul == 'CarasoulUploaded'"></span>
               <div class="text-center">

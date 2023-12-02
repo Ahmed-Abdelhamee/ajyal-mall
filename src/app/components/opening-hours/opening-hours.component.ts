@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { homePhoto } from 'src/app/interfaces/home.interface';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-opening-hours',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OpeningHoursComponent implements OnInit {
 
-  constructor() { }
+  carasoulImages:homePhoto[]=[]
+  Content:homePhoto[]=[]
 
-  ngOnInit(): void {
+  constructor(private dataServ:DataService) { 
+    if(sessionStorage.getItem("runCarsouel")!="openingOursReloaded"){
+      sessionStorage.setItem("runCarsouel","openingOursReloaded")
+      location.reload();
+    }
+    // -------   get the data -------
+    this.dataServ.getOpenningCarsoul().subscribe(data =>{
+      for (const key in data) {
+        this.carasoulImages.push(data[key])
+      }
+    })
+    this.dataServ.getOpenningImages().subscribe(data =>{
+      for (const key in data) {
+        this.Content.push(data[key])
+      }
+    })
   }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
+
 
 }

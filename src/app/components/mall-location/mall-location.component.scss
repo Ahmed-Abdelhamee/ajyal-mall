@@ -1,0 +1,23 @@
+
+@media screen and (max-width: 600px){
+    div .map{
+        height: 450px;
+    }
+    div .map iframe{
+        height: 260px;
+    }
+}
+
+
+.container{
+    padding: 0%;
+    background-color: white;
+}
+.map{
+    padding: 20px;
+    height: 550px;
+    padding-bottom: 100px;
+}
+iframe{
+    border-radius: 10px;
+}

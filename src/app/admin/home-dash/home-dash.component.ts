@@ -17,11 +17,11 @@ export class HomeDashComponent implements OnInit {
 parttext:string="";
 databaseURL:any="";
 productURL:string="";
-CarasoulURL:string="";
-dataType:string="";
+CarasouelURL:string="";
+datalist:any[]=[];
 // variables for control the view
 uploadingImg:string="null"; // to make an alert for uploading image
-uploadingCarasoul:string="null"; // to make an alert for uploading image
+uploadingCarasouel:string="null"; // to make an alert for uploading image
 partViewController:string=""; // to view part vill be viewed   form   or   table
 edit_control:string="";  // to view which section in the part sellected will be shown
 sectionViewController:string=""; // to control which part will be edited by  adding  ,  deleting   , updating
@@ -49,7 +49,7 @@ constructor(private route:Router,private fb:FormBuilder , private dataServ:DataS
 }
 
 ngOnInit(): void {
-  this.openPart('table data','carsouel','')
+  this.openPart('table data','home-carasouel','')
 }
 
 
@@ -60,45 +60,56 @@ openPart(part:string,type:string,action:string){
   this.edit_control=type; // to view which section in the part sellected will be shown
   this.sectionViewController=action;  // to control which part will be edited by  adding  ,  deleting   , updating
   // delete texts and old data
-  this.uploadingCarasoul=""
+  this.uploadingCarasouel=""
   this.uploadingImg=""
   this.showDeleteDiv=false
   if(part=="table data"){
     this.showdata(type);
   }
 }
-
 // ------------------------------------ show data table -------------------------------------
 showdata(type:string){
-  this.dataType=type;
-}
-
-// ------------------------------------- send data to add to database -----------------------------------
-// ---- Carasoul function for home ----
-sendCarasoul(edit_control:string,sectionViewController:string){
-  this.homeImg.patchValue({
-    img:this.CarasoulURL,
-  })
-// ---- add carasoul ----
-  if(edit_control=="carsouel" && sectionViewController =="add")
-  {
-    this.dataServ.create(this.homeImg.value,"carsouel","add");
+  this.datalist=[]
+  if(type=="home-carasouel"){
+    this.dataServ.getCarsoul().subscribe(data=>{
+      for (const key in data) {
+        this.datalist.push(data[key])
+      }
+    })
+  }else  if(type=="home-products"){
+    this.dataServ.gethomeImages().subscribe(data=>{
+      for (const key in data) {
+        this.datalist.push(data[key])
+      }
+    })
   }
-// ---- edit carasoul ----
-  else if(edit_control=="carsouel" && sectionViewController =="edit"){
+}
+// ------------------------------------- send data to add to database -----------------------------------
+// ---- Carasouel function for home ----
+sendCarasouel(edit_control:string,sectionViewController:string){
+  this.homeImg.patchValue({
+    img:this.CarasouelURL,
+  })
+// ---- add carasouel ----
+  if(edit_control=="home-carasouel" && sectionViewController =="add")
+  {
+    this.dataServ.create(this.homeImg.value,"carasouel","add");
+  }
+// ---- edit carasouel ----
+  else if(edit_control=="home-carasouel" && sectionViewController =="edit"){
     this.dataServ.getCarsoul().subscribe(data=>{
       for (const key in data) {
         if(this.updateObject.id==data[key].id){
           this.homeImg.patchValue({
             id:Number(this.updateObject.id)
           })
-          this.dataServ.create(this.homeImg.value,"carsouel",key);
+          this.dataServ.create(this.homeImg.value,"carasouel",key);
           break;
         }
       }
     })
   }
-  this.uploadingCarasoul="null";
+  this.uploadingCarasouel="null";
 }
 
 // ---- send product function for home ----
@@ -106,10 +117,10 @@ sendProducts(edit_control:string,sectionViewController:string){
   this.homeImg.patchValue({
     img:this.productURL
   })
-  if(edit_control=="products" && sectionViewController =="add"){
+  if(edit_control=="home-products" && sectionViewController =="add"){
     this.dataServ.create(this.homeImg.value,"products","add");
   }
-  else if(edit_control=="products" && sectionViewController =="edit"){
+  else if(edit_control=="home-products" && sectionViewController =="edit"){
     this.dataServ.gethomeImages().subscribe(data=>{
       this.homeImg.patchValue({
         id:Number(this.updateObject.id)
@@ -128,10 +139,10 @@ sendProducts(edit_control:string,sectionViewController:string){
 // --------------------------------------- update part ---------------------------------------
 update(item:any,sectionViewController:string){
   this.updateObject=item;
-  if(this.edit_control=='carsouel' && sectionViewController=='edit')
+  if(this.edit_control=='home-carasouel' && sectionViewController=='edit')
     {
       this.sectionViewController=sectionViewController
-    } else if(this.edit_control=='products' && sectionViewController=='edit')
+    } else if(this.edit_control=='home-products' && sectionViewController=='edit')
     {
       this.sectionViewController=sectionViewController
     }
@@ -150,20 +161,20 @@ cancel_delete(){
   this.showDeleteDiv=false;
 }
 deleteItem(item:any,sectionViewController:string){
-//----------- delete carasoul -----------
-  if(this.edit_control=='carsouel' && sectionViewController=='delete')
+//----------- delete carasouel -----------
+  if(this.edit_control=='home-carasouel' && sectionViewController=='delete')
   {
     this.sectionViewController=sectionViewController;
     this.dataServ.getCarsoul().subscribe(data=>{
       for (const key in data) {
         if(item.id==data[key].id){
-          this.dataServ.delete("carsouel",key);
+          this.dataServ.delete("carasouel",key);
           break;
         }
       }
     })
 //------------- delete content -------------
-  } else if(this.edit_control=='products' && sectionViewController=='delete') {
+  } else if(this.edit_control=='home-products' && sectionViewController=='delete') {
     this.sectionViewController=sectionViewController;
     this.dataServ.gethomeImages().subscribe(data=>{
       for (const key in data) {
@@ -179,18 +190,18 @@ deleteItem(item:any,sectionViewController:string){
 
 // --------------------------------------------  upload photos -----------------------------------------
 
-// funcion to upload img file and get image url   ---- for home carasoul -------
-async uploadCarasoul(event:any,edit_control:string){
+// funcion to upload img file and get image url   ---- for home carasouel -------
+async uploadCarasouel(event:any,edit_control:string){
   this.edit_control=edit_control
-  this.uploadingCarasoul="uploadingCarasoul";
+  this.uploadingCarasouel="uploadingCarasouel";
   const file=event.target.files[0];
   if(file){
     const path=`ajyal/${file.name}${new Date().getTime()}`; // we make name of file in firebase storage 
     const uploadTask = await this.firestorage.upload(path,file)
     const url =await uploadTask.ref.getDownloadURL()
-    this.CarasoulURL=url;
+    this.CarasouelURL=url;
   }
-  this.uploadingCarasoul="CarasoulUploaded";
+  this.uploadingCarasouel="CarasouelUploaded";
 }
 // funcion to upload img file and get image url ---- for product -------
 async uploadImg(event:any,edit_control:string){

@@ -1,0 +1,31 @@
+
+/*
+
+ get it' style from file shared in assets folder  
+
+ "styles": 
+          [
+            "src/styles.scss",
+            "node_modules/font-awesome/css/font-awesome.css",
+            "src/assets/shared-styles/home-shared-style.scss"
+          ],
+
+*/
+
+@media screen and (max-width: 700px){
+    div.global-content-padding{
+        padding-top: 0px;
+    }
+    // .carousel-inner .carousel-item img{
+    //     height: calc(100vh - 435px) !important;
+    // }
+    .row .productImg{
+        padding: 5px;
+    }
+    .showImg .carousel .carousel-inner .carousel-item img{
+      height: 291px !important;
+      width: 100% !important;
+      margin-top: 87px;
+  }
+  
+  }

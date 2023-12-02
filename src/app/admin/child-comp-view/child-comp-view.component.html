@@ -15,10 +15,23 @@
           <td><img [src]="item.img" class="imgView" alt=""></td>
           <td *ngIf="item.url">{{item.url}}</td>
           <td class="item">
-            <button class="btn btn-warning m-1">edit</button>  
-            <button class="btn btn-danger m-1" >delete</button>  
+            <button class="btn btn-warning m-1"  (click)="openPart('form',edit_control,'edit');update(item,'edit')">edit</button>  
+            <button class="btn btn-danger m-1"  (click)="DeleteSure(item)">delete</button>  
           </td>
         </tr>
       </tbody>
+      <!-- deleted item div -->
+      <div class="col-12 delete-show" *ngIf="showDeleteDiv">
+        <div class="row check-data">
+          <div class=" card">
+            <p><img [src]="deletedObject.img" class="imgView" alt=""></p>
+            <p *ngIf="edit_control=='mall-location-carsouel'" >carsouel view</p>
+            <div class="text-center">
+              <div class="btn btn-danger" (click)="deleteDone()">delete</div>
+              <div class="btn btn-secondary" (click)="cancel_delete()">cancel</div>
+            </div>  
+          </div>
+        </div>
+      </div>
     </table>
 </div>

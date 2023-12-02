@@ -1,1 +1,50 @@
-<p>entertainment works!</p>
+<div class="col-12 global-content-padding">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item" [ngClass]="{'active' : i === 0}" *ngFor="let item of carasoulImages ; let i=index" >
+          <img [src]="item.img" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+  
+  <div class="col-12 bg-pink">
+    <div class="container-fluid bg-light products Content">
+        <p class="text-center text-dark promo-text" style="color: white !important;">.</p>
+        <div class="row align-items-start bg-light">
+      <div class="col-sm-3 productImg"  *ngFor="let item of images ; let i=index">
+        <img [src]="item.img" alt="..." (click)="showProduct(item)">
+      </div>
+    </div>
+  </div>
+  </div>
+  
+  <div class="col-12 showImg">
+  <button class="btn-close" id="close"></button>
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item" [ngClass]="{'active' : i === imgSource}" *ngFor="let item of imageShow ; let i=index" >
+        <img [src]="item.img" class="d-block w-100" alt="...">
+        <div class="button-link-div text-center">
+            <a [href]="item.url" target="_blank" *ngIf="item.url !=''"><button class="btn button-link">go to website</button></a>
+        </div>
+    </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon product-arrows" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon product-arrows" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  </div>

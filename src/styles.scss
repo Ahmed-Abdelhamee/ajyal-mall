@@ -1,8 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 // @import 'node_modules/ngx-toastr/toastr';
-
-@import "~bootstrap-icons/font/bootstrap-icons.css";
-
 *{
     box-sizing: border-box;
     transition: .5s;
@@ -60,6 +57,12 @@
 .container {
     position: relative;
     padding: 0px;
+}
+.productImg img {
+    width: 90%;
+    height: 230px;
+    border-radius: 10px;
+    margin: 5px 5px 5px 5%;
 }
 // for dashboard small img show
 .logo-photo{

@@ -1,0 +1,31 @@
+
+@media screen and (max-width: 600px){
+    .container .data{
+        padding: 10px;
+    }
+    .data .paragraph{
+        font-size: 14px;
+        text-align: center;
+        font-weight: 500;
+    }
+}
+.container{
+    background-color: white;
+    padding: 0%;
+}
+.title{
+    color: #BC0EC2;
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 600;
+    font-size: 19px;
+    padding: 6px;
+}
+.paragraph{
+    font-family: 'Fira Sans', sans-serif;
+}
+.data{
+    padding: 7px 20px;
+}
+p{
+    margin-bottom: 1px;
+}

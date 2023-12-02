@@ -22,7 +22,7 @@ export class DataService {
   }
   // get Home data
   getCarsoul():Observable<homePhoto[]>{
-    return this.http.get<homePhoto[]>(`${this.databaseURL}/carsouel.json`)
+    return this.http.get<homePhoto[]>(`${this.databaseURL}/carasouel.json`)
   }
   gethomeImages():Observable<homePhoto[]>{
     return this.http.get<homePhoto[]>(`${this.databaseURL}/products.json`)
@@ -111,11 +111,11 @@ export class DataService {
   }
   // / get  Albairaq Tower carasoul
   getAjyalTowerCarasoul():Observable<homePhoto[]>{
-    return this.http.get<homePhoto[]>(`${this.databaseURL}/albairaqTowerCarasoul.json`)
+    return this.http.get<homePhoto[]>(`${this.databaseURL}/ajyalTowerCarasoul.json`)
   }
   // get  Albairaq Tower
   getAjyalTowerImages():Observable<any[]>{
-    return this.http.get<any[]>(`${this.databaseURL}/albairaqTowerImages.json`)
+    return this.http.get<any[]>(`${this.databaseURL}/ajyalTowerImages.json`)
   }
   // / get  Mall location carasoul
   getMallLocationCarsoul():Observable<homePhoto[]>{
