@@ -11,21 +11,21 @@
         <div class="btn btn-info text-light" (click)="openPart('table data','clothing-carsouel','')">show carsouel</div>
       </div>
       <!-- promo show on edit any data  -->
-      <div class="col-12 update-View" *ngIf="sectionViewController=='edit'">
+      <div class="col-12 update-View" *ngIf="action_Will_Be_Done=='edit'">
         <div class="row check-data text-center">
           <div class=" card">
             <p><img src="{{updateObject.img}}"  class="imgView" alt="" *ngIf="updateObject.img !='' && updateObject.img !=null && updateObject !=undefined"></p>
-            <p [ngStyle]="{'display' :( edit_control =='clothing-carsouel') ? 'block' : 'none'}" >carsouel view</p>
-            <p class="text-primary" *ngIf="edit_control =='clothing-products'" [ngStyle]="{'display' :( updateObject.url == '') ? 'none' : 'block'} ">{{updateObject.url}}</p>
-            <p [ngStyle]="{'display' :( edit_control =='clothing-products' && updateObject.url == '' ) ? 'block' : 'none'} ">product view</p>
+            <p [ngStyle]="{'display' :( type_of_data_in_part =='clothing-carsouel') ? 'block' : 'none'}" >carsouel view</p>
+            <p class="text-primary" *ngIf="type_of_data_in_part =='clothing-products'" [ngStyle]="{'display' :( updateObject.url == '') ? 'none' : 'block'} ">{{updateObject.url}}</p>
+            <p [ngStyle]="{'display' :( type_of_data_in_part =='clothing-products' && updateObject.url == '' ) ? 'block' : 'none'} ">product view</p>
           </div>
         </div>
       </div>
       <!-- clothing forms -->
-      <div *ngIf="partViewController=='form'">
-        <div class="col-12 dash-content p-2" *ngIf="sectionViewController == 'add' || (sectionViewController== 'edit' && edit_control=='clothing-carsouel')">
+      <div *ngIf="Basic_part_of_control=='form'">
+        <div class="col-12 dash-content p-2" *ngIf="action_Will_Be_Done == 'add' || (action_Will_Be_Done== 'edit' && type_of_data_in_part=='clothing-carsouel')">
           <!-- carsouel form -->
-          <form [formGroup]="clothingImg" class="card p-2" (ngSubmit)="sendCarasoul(edit_control,sectionViewController)" >
+          <form [formGroup]="clothingImg" class="card p-2" (ngSubmit)="sendCarasoul(type_of_data_in_part,action_Will_Be_Done)" >
               <label for="logo">clothing Carasoul Image : </label>
               <input type="file" accept=".jpg , .png , .jpeg , .webp "  class="form-control" id="logo"  (change)=" uploadCarasoul($event,'clothing-carsouel')">
               <span class="text-warning" *ngIf="uploadingCarasoul == 'uploadingCarasoul' "> uploading ... </span> <span><img [src]="CarasoulURL" alt="" class="logo-photo"  *ngIf="uploadingCarasoul == 'CarasoulUploaded'"></span>
@@ -35,8 +35,8 @@
           </form>
         </div>
         <!-- product form -->
-        <div class="col-12 dash-content p-2" *ngIf="sectionViewController == 'add' || (sectionViewController== 'edit' && edit_control=='clothing-products')">
-          <form [formGroup]="clothingImg" class="card p-2" (ngSubmit)="sendProducts(edit_control,sectionViewController)" >
+        <div class="col-12 dash-content p-2" *ngIf="action_Will_Be_Done == 'add' || (action_Will_Be_Done== 'edit' && type_of_data_in_part=='clothing-products')">
+          <form [formGroup]="clothingImg" class="card p-2" (ngSubmit)="sendProducts(type_of_data_in_part,action_Will_Be_Done)" >
               <label for="logo2">clothing Product Image : </label>
               <input type="file" accept=".jpg , .png , .jpeg , .webp "  class="form-control" id="logo2"  (change)=" uploadImg($event,'clothing-products')">
               <div class="form-group">
@@ -45,21 +45,21 @@
             </div>
               <span class="text-warning" *ngIf="uploadingImg == 'uploadingImg'"> uploading ... </span> <span><img [src]="productURL" alt="" class="logo-photo"  *ngIf="uploadingImg == 'imgUploaded'"></span>
               <div class="text-center">
-                  <button type="submit" class="btn btn-secondary " *ngIf="(uploadingImg == 'imgUploaded' &&  sectionViewController == 'add') || sectionViewController == 'edit'" >save</button>
+                  <button type="submit" class="btn btn-secondary " *ngIf="(uploadingImg == 'imgUploaded' &&  action_Will_Be_Done == 'add') || action_Will_Be_Done == 'edit'" >save</button>
               </div>
             </form>
         </div>
       </div>
 
       <!-- data table -->
-      <div class="col-12 table-div" *ngIf="partViewController=='table data' || showDeleteDiv">
+      <div class="col-12 table-div" *ngIf="Basic_part_of_control=='table data' || showDeleteDiv">
         <p class="part-view" *ngIf="!showDeleteDiv">{{parttext}}</p>
         <table class="table table-striped text-center" *ngIf="!showDeleteDiv">
           <thead>
             <tr>
               <th scope="col">#</th>
               <th scope="col">carasoul</th>
-              <th scope="col" *ngIf="edit_control=='clothing-products'">url </th>
+              <th scope="col" *ngIf="type_of_data_in_part=='clothing-products'">url </th>
               <th scope="col"></th>
             </tr>
           </thead>
@@ -67,9 +67,9 @@
             <tr *ngFor="let item of datalist;let i=index">
               <th scope="row" class="item">{{i+1}}</th>
               <td><img [src]="item.img" class="imgView" alt=""></td>
-              <td *ngIf="edit_control=='clothing-products'">{{item.url}}</td>
+              <td *ngIf="type_of_data_in_part=='clothing-products'">{{item.url}}</td>
               <td class="item">
-                <button class="btn btn-warning m-1" (click)="openPart('form',edit_control,'edit');update(item,'edit')">edit</button>  
+                <button class="btn btn-warning m-1" (click)="openPart('form',type_of_data_in_part,'edit');update(item,'edit')">edit</button>  
                 <button class="btn btn-danger m-1" (click)="DeleteSure(item)">delete</button>  
               </td>
             </tr>
@@ -81,8 +81,8 @@
           <div class="row check-data">
             <div class=" card">
               <p><img [src]="deletedObject.img" class="imgView" alt=""></p>
-              <p *ngIf="edit_control=='clothing-products'" >product view</p>
-              <p *ngIf="edit_control=='clothing-carsouel'" >carsouel view</p>
+              <p *ngIf="type_of_data_in_part=='clothing-products'" >product view</p>
+              <p *ngIf="type_of_data_in_part=='clothing-carsouel'" >carsouel view</p>
               <div class="text-center">
                 <div class="btn btn-danger" (click)="deleteDone()">delete</div>
                 <div class="btn btn-secondary" (click)="cancel_delete()">cancel</div>

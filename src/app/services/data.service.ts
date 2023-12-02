@@ -121,7 +121,9 @@ export class DataService {
   getMallLocationCarsoul():Observable<homePhoto[]>{
     return this.http.get<homePhoto[]>(`${this.databaseURL}/MallLocationCarasoul.json`)
   }
-  
+  getMallLocationMap():Observable<any[]>{
+    return this.http.get<any[]>(`${this.databaseURL}/MallLocationMap.json`)
+  }
   // create the data
   create(data:any , position:string,key:string){
     if(key=="add")

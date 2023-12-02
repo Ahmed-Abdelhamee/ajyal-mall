@@ -19,10 +19,9 @@ export class MallLocationDashComponent implements OnInit {
   datalist:any[]=[];
   databaseURL:any="";
   // variables for controll the view
-  carsouelFormControl:string="";
-  partViewController:string="";
-  sectionViewController:string="";
-  edit_control:string="";
+  Basic_part_of_control:string="";
+  type_of_data_in_part:string="";
+  action_Will_Be_Done:string="";
   viewController:string="";
   uploadingImg:string="null";
   uploadingCarasoul:string="null";
@@ -35,6 +34,10 @@ export class MallLocationDashComponent implements OnInit {
   // for adding 
   MallLocation=this.fb.group({
     img:[""],
+    id:[new Date().getTime()]
+  })
+  MallLocationMap=this.fb.group({
+    map:[""],
     id:[new Date().getTime()]
   })
 
@@ -50,11 +53,14 @@ export class MallLocationDashComponent implements OnInit {
 
     // ------------------------------------- open part ------------------------------------------
     openPart(part:string,type:string,action:string){
+      // part  is a basic part of view   assigned to  -------- Basic_part_of_control
+      // type is a type of data view control   assigned to  --------   type_of_data_in_part
+      // action is a order of view control for adding or delete or edit   assigned to ----------  action_Will_Be_Done
+
       this.parttext=`the show of ${type}`
-      this.partViewController=part;
-      this.sectionViewController=action;
-      this.carsouelFormControl=action;
-      this.edit_control=type;
+      this.Basic_part_of_control=part;
+      this.type_of_data_in_part=type;
+      this.action_Will_Be_Done=action;
       // delete texts and old data
       this.uploadingCarasoul=""
       this.uploadingImg=""
@@ -67,9 +73,15 @@ export class MallLocationDashComponent implements OnInit {
     // ------------------------------------ show data table -------------------------------------
     showdata(type:string){
       this.datalist=[]
-      this.edit_control=type;
+      this.type_of_data_in_part=type;
       if(type=="mall-location-carsouel"){
         this.dataServ.getMallLocationCarsoul().subscribe(data=>{
+          for (const key in data) {
+            this.datalist.push(data[key])
+          }
+        })
+      }else if(type=="mall-location-map"){
+        this.dataServ.getMallLocationMap().subscribe(data=>{
           for (const key in data) {
             this.datalist.push(data[key])
           }
@@ -81,17 +93,17 @@ export class MallLocationDashComponent implements OnInit {
 // ------------------------------------- send data to add to database -----------------------------------
   
   // ------------- Carasoul function for MallLocation -----------------
-  sendCarasoul(edit_control:string,sectionViewController:string){
+  sendCarasoul(type_of_data_in_part:string,action_Will_Be_Done:string){
     this.MallLocation.patchValue({
       img:this.CarasoulURL,
     })
     // add carasoul
-    if(edit_control=="mall-location-carsouel" && sectionViewController =="add")
+    if(type_of_data_in_part=="mall-location-carsouel" && action_Will_Be_Done =="add")
     {
       this.dataServ.create(this.MallLocation.value,"MallLocationCarasoul","add");
     }
     // edit carasoul
-    else if(edit_control=="mall-location-carsouel" && sectionViewController =="edit"){
+    else if(type_of_data_in_part=="mall-location-carsouel" && action_Will_Be_Done =="edit"){
       this.dataServ.getMallLocationCarsoul().subscribe(data=>{
         for (const key in data) {
           if(this.updateObject.id==data[key].id){
@@ -107,12 +119,24 @@ export class MallLocationDashComponent implements OnInit {
     this.uploadingCarasoul="null";
   }
 
+  sendMap(type_of_data_in_part:string,action_Will_Be_Done:string){
+    if(type_of_data_in_part=="mall-location-map" && action_Will_Be_Done =="update"){
+      this.dataServ.getMallLocationMap().subscribe(data=>{
+        console.log("data")
+        for (const key in data) {
+            this.dataServ.create(this.MallLocationMap.value,"MallLocationMap",key);
+            break;
+          }
+      })
+    }
+  }
+
   // --------------------------------------- update part ---------------------------------------
-  update(item:any,sectionViewController:string){
+  update(item:any,action_Will_Be_Done:string){
     this.updateObject=item;
-    if(this.edit_control=='mall-location-carsouel' && sectionViewController=='edit')
+    if(this.type_of_data_in_part=='mall-location-carsouel' && action_Will_Be_Done=='edit')
       {
-        this.sectionViewController=sectionViewController
+        this.action_Will_Be_Done=action_Will_Be_Done
       } 
   }
 
@@ -128,11 +152,11 @@ export class MallLocationDashComponent implements OnInit {
   cancel_delete(){
     this.showDeleteDiv=false;
   }
-  deleteItem(item:any,sectionViewController:string){
+  deleteItem(item:any,action_Will_Be_Done:string){
     //----------- delete carasoul -----------
-    if(this.edit_control=='mall-location-carsouel' && sectionViewController=='delete')
+    if(this.type_of_data_in_part=='mall-location-carsouel' && action_Will_Be_Done=='delete')
     {
-      this.sectionViewController=sectionViewController;
+      this.action_Will_Be_Done=action_Will_Be_Done;
       this.dataServ.getMallLocationCarsoul().subscribe(data=>{
         for (const key in data) {
           if(item.id==data[key].id){
@@ -148,8 +172,8 @@ export class MallLocationDashComponent implements OnInit {
   // --------------------------------------------  upload photos -----------------------------------------
 
   // funcion to upload img file and get image url   ---- for MallLocation carasoul -------
-  async uploadCarasoul(event:any,edit_control:string){
-    this.edit_control=edit_control
+  async uploadCarasoul(event:any,type_of_data_in_part:string){
+    this.type_of_data_in_part=type_of_data_in_part
     this.uploadingCarasoul="uploadingCarasoul";
     const file=event.target.files[0];
     if(file){

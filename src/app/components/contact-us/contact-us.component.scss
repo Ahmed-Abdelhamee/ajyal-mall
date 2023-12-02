@@ -31,7 +31,7 @@
     }
 }
 .all{
-    background-color: #ffe7eb;
+    background-color: #e7eeff57;
     margin-bottom: -20px;
 }
 .content{
@@ -42,18 +42,7 @@
     align-items: center;
     padding-left: 20px;
 }
-.title{
-    color: #BC0EC2;
-    font-family: cursive;
-    font-size: 20px;
-    padding: 14px 0px;
-    margin-bottom: 0px;
-    font-weight: 600;
-}
-.paragraph{
-    margin-bottom: 0;
-    font-weight: 500;
-}
+
 .form-div{
     // background: #ffc0cb3d;
     margin-top: 10px;
@@ -114,14 +103,14 @@ input , textarea{
     width: 100%;
 }
 input:focus,textarea:focus,input:hover,textarea:hover{
-    border-color: pink;
-    outline-color: pink;
+    border-color: aliceblue;
+    outline-color: aliceblue;
 }
 .submit{
     padding: 7px 25px;
     font-family: auto;
     font-size: 18px;
-    background-color: #ffe7eb;
+    background-color: aliceblue;
 
 }
 .submit:hover{

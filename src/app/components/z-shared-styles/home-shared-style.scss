@@ -162,7 +162,7 @@
     cursor: pointer !important;
     width: -moz-fit-content;
     width: fit-content;
-    background-color: #cd0bff;
+    background-color: rgb(0, 54, 142);
     color: white;
     text-transform: capitalize;
     padding: 4px 20px;
@@ -170,7 +170,7 @@
     font-size: 12px;
 }
 .button-link:hover{
-   color: #cd0bff;
-    border: 1px solid #cd0bff;
+   color: white;
+    border: 1px solid blue;
     font-weight: 600;
 }

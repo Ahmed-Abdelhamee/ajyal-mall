@@ -16,7 +16,6 @@ import { AccessoiresComponent } from './components/accessoires/accessoires.compo
 import { StoreLocatoinComponent } from './components/store-locatoin/store-locatoin.component';
 import { AjyalMallComponent } from './components/ajyal-mall/ajyal-mall.component';
 import { HomeComponent } from './components/home/home.component';
-import { MallLocationDashComponent } from './admin/mall-location-dash/mall-location-dash.component';
 
 const routes: Routes = [
   {path:"" , component: HomeComponent},
@@ -30,7 +29,7 @@ const routes: Routes = [
   {path:"entertainment" , component: EntertainmentComponent},
   {path:"about" , component:AboutComponent},
   {path:"opening-hours" , component:OpeningHoursComponent},
-  {path:"mall-location" , component:MallLocationDashComponent},
+  {path:"mall-location" , component:MallLocationComponent},
   {path:"store-location" , component:StoreLocatoinComponent},
   {path:"contact-us" , component:ContactUsComponent},
   {path:"ajyal-tower" , component: AjyalMallComponent},

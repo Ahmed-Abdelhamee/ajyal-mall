@@ -18,10 +18,9 @@ export class AccessoiresDashComponent implements OnInit {
   datalist:any[]=[];
   databaseURL:any="";
   // variables for controll the view
-  carsouelFormControl:string="";
-  partViewController:string="";
-  sectionViewController:string="";
-  edit_control:string="";
+  Basic_part_of_control:string="";
+  action_Will_Be_Done:string="";
+  type_of_data_in_part:string="";
   viewController:string="accessories";
   uploadingImg:string="null";
   uploadingCarasoul:string="null";
@@ -51,17 +50,17 @@ export class AccessoiresDashComponent implements OnInit {
 
 // ------------------------------------- send data to add to database -----------------------------------
   // ---- Carasoul function for accessories ----
-  sendCarasoul(edit_control:string,sectionViewController:string){
+  sendCarasoul(type_of_data_in_part:string,action_Will_Be_Done:string){
     this.accessoriesImg.patchValue({
       img:this.CarasoulURL,
     })
     // add carasoul
-    if(edit_control=="accessories-carsouel" && sectionViewController =="add")
+    if(type_of_data_in_part=="accessories-carsouel" && action_Will_Be_Done =="add")
     {
       this.dataServ.create(this.accessoriesImg.value,"accessoriesCarasoul","add");
     }
     // edit carasoul
-    else if(edit_control=="accessories-carsouel" && sectionViewController =="edit"){
+    else if(type_of_data_in_part=="accessories-carsouel" && action_Will_Be_Done =="edit"){
       this.dataServ.getaccessoriesCarasoul().subscribe(data=>{
         for (const key in data) {
           if(this.updateObject.id==data[key].id){
@@ -77,14 +76,14 @@ export class AccessoiresDashComponent implements OnInit {
     this.uploadingCarasoul="null";
   }
   // -------- product function for accessories ------
-  sendProducts(edit_control:string,sectionViewController:string){
+  sendProducts(type_of_data_in_part:string,action_Will_Be_Done:string){
     this.accessoriesImg.patchValue({
       img:this.productURL
     })
-    if(edit_control=="accessories-products" && sectionViewController =="add"){
+    if(type_of_data_in_part=="accessories-products" && action_Will_Be_Done =="add"){
       this.dataServ.create(this.accessoriesImg.value,"accessoriesImages","add");
     }
-    else if(edit_control=="accessories-products" && sectionViewController =="edit"){
+    else if(type_of_data_in_part=="accessories-products" && action_Will_Be_Done =="edit"){
       this.dataServ.getaccessoriesImages().subscribe(data=>{
         this.accessoriesImg.patchValue({
           id:Number(this.updateObject.id)
@@ -112,10 +111,9 @@ export class AccessoiresDashComponent implements OnInit {
   // ------------------------------------- open part ------------------------------------------
   openPart(part:string,type:string,action:string){
     this.parttext=`the show of ${type}`
-    this.partViewController=part;
-    this.sectionViewController=action;
-    this.carsouelFormControl=action;
-    this.edit_control=type;
+    this.Basic_part_of_control=part;
+    this.action_Will_Be_Done=action;
+    this.type_of_data_in_part=type;
     // delete texts and old data
     this.uploadingCarasoul=""
     this.uploadingImg=""
@@ -130,7 +128,7 @@ export class AccessoiresDashComponent implements OnInit {
   // ------------------------------------ show data table -------------------------------------
   showdata(type:string){
     this.datalist=[]
-    this.edit_control=type;
+    this.type_of_data_in_part=type;
     if(type=="accessories-carsouel"){
       this.dataServ.getaccessoriesCarasoul().subscribe(data=>{
         for (const key in data) {
@@ -146,17 +144,17 @@ export class AccessoiresDashComponent implements OnInit {
     }
   }
   // --------------------------------------- update part ---------------------------------------
-  update(item:any,sectionViewController:string){
+  update(item:any,action_Will_Be_Done:string){
     this.updateObject=item;
-    if(this.edit_control=='accessories-carsouel' && sectionViewController=='edit')
+    if(this.type_of_data_in_part=='accessories-carsouel' && action_Will_Be_Done=='edit')
       {
-        this.sectionViewController=sectionViewController
-      } else if(this.edit_control=='accessories-products' && sectionViewController=='edit')
+        this.action_Will_Be_Done=action_Will_Be_Done
+      } else if(this.type_of_data_in_part=='accessories-products' && action_Will_Be_Done=='edit')
       {
         this.accessoriesImg.patchValue({
           url:this.updateObject.url
         })
-        this.sectionViewController=sectionViewController
+        this.action_Will_Be_Done=action_Will_Be_Done
       }
   }
   // --------------------------------------- delete part ---------------------------------------
@@ -171,11 +169,11 @@ export class AccessoiresDashComponent implements OnInit {
   cancel_delete(){
     this.showDeleteDiv=false;
   }
-  deleteItem(item:any,sectionViewController:string){
+  deleteItem(item:any,action_Will_Be_Done:string){
     //----------- delete carasoul -----------
-    if(this.edit_control=='accessories-carsouel' && sectionViewController=='delete')
+    if(this.type_of_data_in_part=='accessories-carsouel' && action_Will_Be_Done=='delete')
     {
-      this.sectionViewController=sectionViewController;
+      this.action_Will_Be_Done=action_Will_Be_Done;
       this.dataServ.getaccessoriesCarasoul().subscribe(data=>{
         for (const key in data) {
           if(item.id==data[key].id){
@@ -185,9 +183,9 @@ export class AccessoiresDashComponent implements OnInit {
         }
       })
       // ----------- delete content -----------
-    } else if(this.edit_control=='accessories-products' && sectionViewController=='delete')
+    } else if(this.type_of_data_in_part=='accessories-products' && action_Will_Be_Done=='delete')
     {
-      this.sectionViewController=sectionViewController;
+      this.action_Will_Be_Done=action_Will_Be_Done;
       this.dataServ.getaccessoriesImages().subscribe(data=>{
         for (const key in data) {
           if(item.id==data[key].id){
@@ -200,8 +198,8 @@ export class AccessoiresDashComponent implements OnInit {
   }
   // --------------------------------------------  upload photos -----------------------------------------
   // funcion to upload img file and get image url   -----------for accessories carasoul --------------
-  async uploadCarasoul(event:any,edit_control:string){
-    this.edit_control=edit_control
+  async uploadCarasoul(event:any,type_of_data_in_part:string){
+    this.type_of_data_in_part=type_of_data_in_part
     this.uploadingCarasoul="uploadingCarasoul";
     const file=event.target.files[0];
     if(file){
@@ -213,8 +211,8 @@ export class AccessoiresDashComponent implements OnInit {
     this.uploadingCarasoul="CarasoulUploaded";
   }
   // funcion to upload img file and get image url ----------- for product --------------
-  async uploadImg(event:any,edit_control:string){
-    this.edit_control=edit_control
+  async uploadImg(event:any,type_of_data_in_part:string){
+    this.type_of_data_in_part=type_of_data_in_part
     this.uploadingImg="uploadingImg";
     const file=event.target.files[0];
     if(file){

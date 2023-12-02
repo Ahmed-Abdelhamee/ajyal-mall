@@ -34,6 +34,7 @@ import { StoreLocatoinComponent } from './components/store-locatoin/store-locato
 import { AdminModule } from './admin/admin.module';
 import { RouterModule } from '@angular/router';
 import { DirDirective } from './directives/dir.directive';
+import { UrlSafePipe } from './pipes/url-safe.pipe';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { DirDirective } from './directives/dir.directive';
     PerfumesComponent,
     ShoesComponent,
     StoreLocatoinComponent,
-    DirDirective
+    DirDirective,
+    UrlSafePipe
   ],
   imports: [
     RouterModule,

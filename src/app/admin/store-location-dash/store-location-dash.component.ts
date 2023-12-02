@@ -17,10 +17,9 @@ export class StoreLocationDashComponent implements OnInit {
   datalist: any[] = [];
   CarasoulstoreLocationURL: string = "";
   // for controlling the view and data
-  carsouelFormControl: string = "";
-  partViewController: string = "";
-  sectionViewController: string = "";
-  edit_control: string = "";
+  Basic_part_of_control: string = "";
+  action_Will_Be_Done: string = "";
+  type_of_data_in_part: string = "";
   uploading: string = "";
   // for check delete
   deletedObject: any;
@@ -43,10 +42,9 @@ export class StoreLocationDashComponent implements OnInit {
   }
  //--------------------------------------- open the view for data special control ---------------------------------------
  openPart(part:string,type:string,action:string){
-    this.partViewController=part;
-    this.sectionViewController=action;
-    this.edit_control=type;
-    this.carsouelFormControl=action;
+    this.Basic_part_of_control=part;
+    this.action_Will_Be_Done=action;
+    this.type_of_data_in_part=type;
     if(part=="table data"){
       this.showdata(type);
     }
@@ -68,10 +66,10 @@ export class StoreLocationDashComponent implements OnInit {
     this.homeImg.patchValue({
       img:this.CarasoulstoreLocationURL
     })
-    if( this.sectionViewController =="add"){
+    if( this.action_Will_Be_Done =="add"){
         this.dataServ.create(this.homeImg.value,"storeLocation","add");
       }
-      else if(this.edit_control=="carsouel" && this.sectionViewController =="edit"){
+      else if(this.type_of_data_in_part=="carsouel" && this.action_Will_Be_Done =="edit"){
             this.dataServ.getstoreLocation().subscribe(data=>{
               for (const key in data) {
                 if(this.updateObject.id==data[key].id){
@@ -87,9 +85,9 @@ export class StoreLocationDashComponent implements OnInit {
     this.uploading="null";
   }
   // --------------------------------------- update part ----------------------------------------------------
-  update(item:any,sectionViewController:string){
+  update(item:any,action_Will_Be_Done:string){
     this.updateObject=item;
-    this.sectionViewController=sectionViewController
+    this.action_Will_Be_Done=action_Will_Be_Done
   }
   // --------------------------------------- delete part ----------------------------------------------------
   DeleteSure(item:any){
@@ -103,10 +101,10 @@ export class StoreLocationDashComponent implements OnInit {
   cancel_delete(){
     this.showDeleteDiv=false;
   }
-  deleteItem(item:any,sectionViewController:string){
-      if(this.edit_control=='carsouel' && sectionViewController=='delete')
+  deleteItem(item:any,action_Will_Be_Done:string){
+      if(this.type_of_data_in_part=='carsouel' && action_Will_Be_Done=='delete')
       {
-        this.sectionViewController=sectionViewController;
+        this.action_Will_Be_Done=action_Will_Be_Done;
         this.dataServ.getstoreLocation().subscribe(data=>{
           for (const key in data) {
             if(item.id==data[key].id){

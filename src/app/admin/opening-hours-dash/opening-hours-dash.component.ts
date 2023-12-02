@@ -20,10 +20,9 @@ export class OpeningHoursDashComponent implements OnInit {
   datalist:any[]=[];
   databaseURL:any="";
   // variables for controll the view
-  carsouelFormControl:string="";
-  partViewController:string="";
-  sectionViewController:string="";
-  edit_control:string="";
+  Basic_part_of_control:string="";
+  action_Will_Be_Done:string="";
+  type_of_data_in_part:string="";
   viewController:string="openning";
   uploadingImg:string="null";
   uploadingCarasoul:string="null";
@@ -52,10 +51,9 @@ export class OpeningHoursDashComponent implements OnInit {
     // ------------------------------------- open part ------------------------------------------
     openPart(part:string,type:string,action:string){
       this.parttext=`the show of ${type}`
-      this.partViewController=part;
-      this.sectionViewController=action;
-      this.carsouelFormControl=action;
-      this.edit_control=type;
+      this.Basic_part_of_control=part;
+      this.action_Will_Be_Done=action;
+      this.type_of_data_in_part=type;
       // delete texts and old data
       this.uploadingCarasoul=""
       this.uploadingImg=""
@@ -68,7 +66,7 @@ export class OpeningHoursDashComponent implements OnInit {
     // ------------------------------------ show data table -------------------------------------
     showdata(type:string){
       this.datalist=[]
-      this.edit_control=type;
+      this.type_of_data_in_part=type;
       if(type=="openning-hours-carsouel"){
         this.dataServ.getOpenningCarsoul().subscribe(data=>{
           for (const key in data) {
@@ -87,17 +85,17 @@ export class OpeningHoursDashComponent implements OnInit {
 // ------------------------------------- send data to add to database -----------------------------------
   
   // ------------- Carasoul function for openning -----------------
-  sendCarasoul(edit_control:string,sectionViewController:string){
+  sendCarasoul(type_of_data_in_part:string,action_Will_Be_Done:string){
     this.openningImg.patchValue({
       img:this.CarasoulURL,
     })
     // add carasoul
-    if(edit_control=="openning-hours-carsouel" && sectionViewController =="add")
+    if(type_of_data_in_part=="openning-hours-carsouel" && action_Will_Be_Done =="add")
     {
       this.dataServ.create(this.openningImg.value,"openningCarasoul","add");
     }
     // edit carasoul
-    else if(edit_control=="openning-hours-carsouel" && sectionViewController =="edit"){
+    else if(type_of_data_in_part=="openning-hours-carsouel" && action_Will_Be_Done =="edit"){
       this.dataServ.getOpenningCarsoul().subscribe(data=>{
         for (const key in data) {
           if(this.updateObject.id==data[key].id){
@@ -114,14 +112,14 @@ export class OpeningHoursDashComponent implements OnInit {
     console.log(this.openningImg.value)
   }
   // ------------- product function for openning -----------------
-  sendProducts(edit_control:string,sectionViewController:string){
+  sendProducts(type_of_data_in_part:string,action_Will_Be_Done:string){
     this.openningImg.patchValue({
       img:this.productURL
     })
-    if(edit_control=="openning-hours-products" && sectionViewController =="add"){
+    if(type_of_data_in_part=="openning-hours-products" && action_Will_Be_Done =="add"){
       this.dataServ.create(this.openningImg.value,"openningImages","add");
     }
-    else if(edit_control=="openning-hours-products" && sectionViewController =="edit"){
+    else if(type_of_data_in_part=="openning-hours-products" && action_Will_Be_Done =="edit"){
       this.dataServ.getOpenningImages().subscribe(data=>{
         this.openningImg.patchValue({
           id:Number(this.updateObject.id)
@@ -145,14 +143,14 @@ export class OpeningHoursDashComponent implements OnInit {
 
 
   // --------------------------------------- update part ---------------------------------------
-  update(item:any,sectionViewController:string){
+  update(item:any,action_Will_Be_Done:string){
     this.updateObject=item;
-    if(this.edit_control=='openning-hours-carsouel' && sectionViewController=='edit')
+    if(this.type_of_data_in_part=='openning-hours-carsouel' && action_Will_Be_Done=='edit')
       {
-        this.sectionViewController=sectionViewController
-      } else if(this.edit_control=='openning-hours-products' && sectionViewController=='edit')
+        this.action_Will_Be_Done=action_Will_Be_Done
+      } else if(this.type_of_data_in_part=='openning-hours-products' && action_Will_Be_Done=='edit')
       {
-        this.sectionViewController=sectionViewController
+        this.action_Will_Be_Done=action_Will_Be_Done
       }
   }
 
@@ -168,11 +166,11 @@ export class OpeningHoursDashComponent implements OnInit {
   cancel_delete(){
     this.showDeleteDiv=false;
   }
-  deleteItem(item:any,sectionViewController:string){
+  deleteItem(item:any,action_Will_Be_Done:string){
     //----------- delete carasoul -----------
-    if(this.edit_control=='openning-hours-carsouel' && sectionViewController=='delete')
+    if(this.type_of_data_in_part=='openning-hours-carsouel' && action_Will_Be_Done=='delete')
     {
-      this.sectionViewController=sectionViewController;
+      this.action_Will_Be_Done=action_Will_Be_Done;
       this.dataServ.getOpenningCarsoul().subscribe(data=>{
         for (const key in data) {
           if(item.id==data[key].id){
@@ -182,9 +180,9 @@ export class OpeningHoursDashComponent implements OnInit {
         }
       })
       // ----------- delete content -----------
-    } else if(this.edit_control=='openning-hours-products' && sectionViewController=='delete')
+    } else if(this.type_of_data_in_part=='openning-hours-products' && action_Will_Be_Done=='delete')
     {
-      this.sectionViewController=sectionViewController;
+      this.action_Will_Be_Done=action_Will_Be_Done;
       this.dataServ.getOpenningImages().subscribe(data=>{
         for (const key in data) {
           if(item.id==data[key].id){
@@ -200,8 +198,8 @@ export class OpeningHoursDashComponent implements OnInit {
   // --------------------------------------------  upload photos -----------------------------------------
 
   // funcion to upload img file and get image url   ---- for openning carasoul -------
-  async uploadCarasoul(event:any,edit_control:string){
-    this.edit_control=edit_control
+  async uploadCarasoul(event:any,type_of_data_in_part:string){
+    this.type_of_data_in_part=type_of_data_in_part
     this.uploadingCarasoul="uploadingCarasoul";
     const file=event.target.files[0];
     if(file){
@@ -214,8 +212,8 @@ export class OpeningHoursDashComponent implements OnInit {
   }
 
   // funcion to upload img file and get image url ---- for product -------
-  async uploadImg(event:any,edit_control:string){
-    this.edit_control=edit_control
+  async uploadImg(event:any,type_of_data_in_part:string){
+    this.type_of_data_in_part=type_of_data_in_part
     this.uploadingImg="uploadingImg";
     const file=event.target.files[0];
     if(file){

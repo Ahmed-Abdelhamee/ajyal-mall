@@ -10,6 +10,9 @@ import { DataService } from 'src/app/services/data.service';
 export class MallLocationComponent implements OnInit {
 
   carasoulImages:homePhoto[]=[];
+  mapContent:any[]=[];
+
+  srcMap:any="";
 
   constructor(private dataServ:DataService) {
     if(sessionStorage.getItem("runCarsouel")!="hereReloaded"){
@@ -24,6 +27,12 @@ export class MallLocationComponent implements OnInit {
       for (const key in data) {
         this.carasoulImages.push(data[key])
       }
+    })
+    this.dataServ.getMallLocationMap().subscribe(data =>{
+      for (const key in data) {
+        this.mapContent.push(data[key])
+      }
+      this.srcMap=this.mapContent[0].map.slice(this.mapContent[0].map.indexOf("src")+5),this.mapContent[0].map.indexOf(`" width`);
     })
   }
 }

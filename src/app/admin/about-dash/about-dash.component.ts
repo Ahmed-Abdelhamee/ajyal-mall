@@ -15,10 +15,9 @@ export class AboutDashComponent implements OnInit {
   datalist: any[] = [];
   CarasoulAboutURL: string = "";
   // for controlling view and adata
-  carsouelFormControl: string = "";
-  partViewController: string = "";
-  sectionViewController: string = "";
-  edit_control: string = "";
+  Basic_part_of_control: string = "";
+  action_Will_Be_Done: string = "";
+  type_of_data_in_part: string = "";
   uploading: string = "";
   // for update
   updateObject: any;
@@ -45,10 +44,9 @@ export class AboutDashComponent implements OnInit {
   }
  // ----------------------------- open the view for data special control -----------------------------
  openPart(part:string,type:string,action:string){
-    this.partViewController=part;
-    this.sectionViewController=action;
-    this.carsouelFormControl=action;
-    this.edit_control=type;
+    this.Basic_part_of_control=part;
+    this.type_of_data_in_part=type;
+    this.action_Will_Be_Done=action;
     // delete texts and old data
     this.uploading=""
     this.showDeleteDiv=false
@@ -67,10 +65,10 @@ export class AboutDashComponent implements OnInit {
     this.homeImg.patchValue({
       img:this.CarasoulAboutURL
     })
-    if( this.sectionViewController =="add"){
+    if( this.action_Will_Be_Done =="add"){
         this.dataServ.create(this.homeImg.value,"AboutCarasoul","add");
       }
-      else if(this.edit_control=="carsouel" && this.sectionViewController =="edit"){
+      else if(this.type_of_data_in_part=="carsouel" && this.action_Will_Be_Done =="edit"){
             this.dataServ.getAboutCarsoul().subscribe(data=>{
               for (const key in data) {
                 if(this.updateObject.id==data[key].id){
@@ -88,11 +86,11 @@ export class AboutDashComponent implements OnInit {
   // ----------------------------- Data function for About -----------------------------
   sendAboutData(){
     if(this.About.valid){
-      if(this.sectionViewController =="add")
+      if(this.action_Will_Be_Done =="add")
       {
         this.dataServ.create(this.About.value,"AboutContent","add")
       }
-      else if(this.edit_control=="content" && this.sectionViewController =="edit"){
+      else if(this.type_of_data_in_part=="content" && this.action_Will_Be_Done =="edit"){
             this.dataServ.getAboutContent().subscribe(data=>{
               for (const key in data) {
                 if(this.updateObject.id==data[key].id){
@@ -122,19 +120,19 @@ export class AboutDashComponent implements OnInit {
     }
   }
   // ----------------------------- update part -----------------------------
-  update(item:any,sectionViewController:string){
+  update(item:any,action_Will_Be_Done:string){
     this.updateObject=item;
-    if(this.edit_control=='carsouel' && sectionViewController=='edit')
+    if(this.type_of_data_in_part=='carsouel' && action_Will_Be_Done=='edit')
       {
-        this.sectionViewController=sectionViewController
-      } else if(this.edit_control=='content' && sectionViewController=='edit')
+        this.action_Will_Be_Done=action_Will_Be_Done
+      } else if(this.type_of_data_in_part=='content' && action_Will_Be_Done=='edit')
       {
         this.About.patchValue({
           title:item.title,
           paragraph:item.paragraph,
           id:item.id,
         })
-        this.sectionViewController=sectionViewController
+        this.action_Will_Be_Done=action_Will_Be_Done
       }
   }
 
@@ -150,11 +148,11 @@ export class AboutDashComponent implements OnInit {
   cancel_delete(){
     this.showDeleteDiv=false;
   }
-  deleteItem(item:any,sectionViewController:string){
+  deleteItem(item:any,action_Will_Be_Done:string){
     this.deletedObject=item;
     // ----------- delete carasoul -----------
-    if(this.edit_control=='carsouel' && sectionViewController=='delete') {
-      this.sectionViewController=sectionViewController;
+    if(this.type_of_data_in_part=='carsouel' && action_Will_Be_Done=='delete') {
+      this.action_Will_Be_Done=action_Will_Be_Done;
       this.dataServ.getAboutCarsoul().subscribe(data=>{
         for (const key in data) {
           if(item.id==data[key].id){
@@ -164,8 +162,8 @@ export class AboutDashComponent implements OnInit {
         }
       })
     // ----------- delete content -----------
-    } else if(this.edit_control=='content' && sectionViewController=='delete'){
-      this.sectionViewController=sectionViewController;
+    } else if(this.type_of_data_in_part=='content' && action_Will_Be_Done=='delete'){
+      this.action_Will_Be_Done=action_Will_Be_Done;
       this.dataServ.getAboutContent().subscribe(data=>{
         for (const key in data) {
           if(item.id==data[key].id){
