@@ -124,7 +124,7 @@
     padding: 2px;
     color: white;
     font-weight: 400;
-    border-right: 1.5px solid deeppink;
+    border-right: 1.5px solid blue;
     display: flex;
     align-items: center;
 }
@@ -159,7 +159,7 @@ a{
 }
 .dropdown:hover{
     background-color: rgb(221 221 221);
-    background-color: #cd0bff;
+    background-color: rgb(0, 54, 142);
 }
 .dropdown .nav-link{
     padding-left: 30px;
@@ -177,13 +177,13 @@ a{
     border-bottom: 1px solid rgba(239, 239, 239, 0.6392156863);
     font-size: 12px;
     cursor: pointer;
-    background-color: #cd0bff;
+    background-color: rgb(0, 54, 142);
 
 }
 
 .dropdown-menu .dropdown-item:focus,
 .dropdown-menu .dropdown-item:hover{
-    background-color: #7c009b;
+    background-color: #00729b;
 }
 .drop-item-edit{
     border-radius: 0% !important;

@@ -48,8 +48,7 @@ export class HomeComponent implements OnInit {
     this.imageShow=[]
     $(function () {
       $(".showImg").show();
-    console.log(src)
-  })
+    })
     setTimeout(()=> this.imageShow=this.images,50)
     this.imgSource=this.images.indexOf(src);
   }

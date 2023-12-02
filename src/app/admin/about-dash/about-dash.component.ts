@@ -107,13 +107,13 @@ export class AboutDashComponent implements OnInit {
   //----------------------------- for view the data in table -----------------------------
   showdata(type:string){
     this.datalist=[]
-    if(type=="carsouel"){
+    if(type=="carsouel" && this.datalist.length==0){
       this.dataServ.getAboutCarsoul().subscribe(data=>{
         for (const key in data) {
           this.datalist.push(data[key])
         }
       })
-    }else  if(type=="content"){
+    }else  if(type=="content" && this.datalist.length==0){
       this.dataServ.getAboutContent().subscribe(data=>{
         for (const key in data) {
           this.datalist.push(data[key])

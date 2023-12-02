@@ -17,8 +17,7 @@
     margin: 0px;
     padding-top: 15px;
     padding-bottom: 20px;
-    background-color: beige;
-    background-color: rgb(255 243 247);
+    background-color: rgb(218 218 255);
     width: 100%;
 }
 .row{
@@ -30,18 +29,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.link{
-    font-size: 31px;
-    margin: 7px;
-    color:#ff008ae0;
-}
-.link:hover{
-    color: #b56f6f;
-    transform: scale(1.1);
-}
-.col img{
-    height: 100px;
 }
 
 .text1,.text2{
