@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { homePhoto } from 'src/app/interfaces/home.interface';
 import { DataService } from 'src/app/services/data.service';
+import * as $ from 'jquery'
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss', '../z-shared-styles/home-shared-style.scss']
 })
 export class HomeComponent implements OnInit {
 
@@ -14,6 +15,13 @@ export class HomeComponent implements OnInit {
       sessionStorage.setItem("runCarsouel","homeReloaded")
       location.reload();
     }
+    $(function () {
+      hide() 
+      function hide() {
+        $(".showImg").hide();
+      }
+      $("#close").on("click", hide);
+    });
    }
 
   imgSource:any;
@@ -34,21 +42,14 @@ export class HomeComponent implements OnInit {
       }
       this.images.reverse()
     })
-    
-    $(function () {
-      hide() 
-      function hide() {
-        $(".showImg").hide();
-      }
-      $("#close").on("click", hide);
-    });
   }
 
   showProduct(src:homePhoto){
     this.imageShow=[]
     $(function () {
       $(".showImg").show();
-    })
+    console.log(src)
+  })
     setTimeout(()=> this.imageShow=this.images,50)
     this.imgSource=this.images.indexOf(src);
   }

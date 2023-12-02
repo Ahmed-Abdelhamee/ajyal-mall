@@ -5,7 +5,7 @@ import { DataService } from 'src/app/services/data.service';
 @Component({
   selector: 'app-store-locatoin',
   templateUrl: './store-locatoin.component.html',
-  styleUrls: ['./store-locatoin.component.scss']
+  styleUrls: ['./store-locatoin.component.scss', '../z-shared-styles/home-shared-style.scss']
 })
 export class StoreLocatoinComponent implements OnInit {
 

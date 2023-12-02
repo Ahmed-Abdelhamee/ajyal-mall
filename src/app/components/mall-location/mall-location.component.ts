@@ -5,7 +5,7 @@ import { DataService } from 'src/app/services/data.service';
 @Component({
   selector: 'app-mall-location',
   templateUrl: './mall-location.component.html',
-  styleUrls: ['./mall-location.component.scss']
+  styleUrls: ['./mall-location.component.scss', '../z-shared-styles/home-shared-style.scss']
 })
 export class MallLocationComponent implements OnInit {
 

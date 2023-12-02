@@ -64,6 +64,10 @@
     border-radius: 10px;
     margin: 5px 5px 5px 5%;
 }
+.productImg img:hover {
+    filter: brightness(55%);
+    cursor: pointer;
+}
 // for dashboard small img show
 .logo-photo{
     height: 80px;

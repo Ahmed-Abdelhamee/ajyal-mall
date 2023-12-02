@@ -1,0 +1,132 @@
+
+@media screen and (max-width:990px) {
+    [class*="col-"]{
+        width: 100%;
+    }
+    .contacts{
+        display: block !important;
+        padding-top: 0%;
+    }
+    .contacts .texts{
+        justify-content: center;
+    }
+    div.form-div{
+        margin-top: -10px;
+        padding-top: 20px;
+    }
+    .form-div .form-title{
+        padding-top: 15px;
+    }
+    .form .form-group{
+        margin:0px;
+        padding: 0px 15px;
+        width: 100%;
+    }
+    .form-group label{
+        padding: 0px;
+        padding-left: 5px;
+    }
+    .text-center .submit{
+        font-size: 14px;
+    }
+}
+.all{
+    background-color: #ffe7eb;
+    margin-bottom: -20px;
+}
+.content{
+    padding-top: 0%;
+}
+.texts{
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+.title{
+    color: #BC0EC2;
+    font-family: cursive;
+    font-size: 20px;
+    padding: 14px 0px;
+    margin-bottom: 0px;
+    font-weight: 600;
+}
+.paragraph{
+    margin-bottom: 0;
+    font-weight: 500;
+}
+.form-div{
+    // background: #ffc0cb3d;
+    margin-top: 10px;
+    width: 96%;
+    margin-left: 2%;
+    border-radius: 7px;
+    height: calc(100vh - 204px);
+    display: flex;
+}
+.form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.form-title{
+    font-size: 18px;
+    font-weight: 600;
+    font-family: unset;
+    padding: 7px;
+    padding-top: 30px;
+    margin-bottom: 0px;
+    padding-left: 4%;
+    padding-bottom: 0px;
+    text-align: center;
+    color: white;
+    text-transform: capitalize;
+}
+.form-group{
+    display: block;
+    float: left;
+    margin: 15px 0px;
+    margin-left: 20px;
+}
+label{
+    text-transform: capitalize;
+    font-weight: 600;
+    padding: 5px;
+    font-family: initial;
+    font-size: 15px;
+    color: white;
+}
+.form-content{
+    background-color: #ffc0cb52;
+    margin-top: 15px;
+    margin-left: 5px;
+    border-radius: 8px;
+    width: 95%;
+}
+input , textarea{
+    margin: 3px;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    // border: 1px solid deeppink;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%;
+}
+input:focus,textarea:focus,input:hover,textarea:hover{
+    border-color: pink;
+    outline-color: pink;
+}
+.submit{
+    padding: 7px 25px;
+    font-family: auto;
+    font-size: 18px;
+    background-color: #ffe7eb;
+
+}
+.submit:hover{
+    background-color: rgba(0, 0, 0, 0.628);
+}
+.insta{
+    border-radius: 5px;
+}

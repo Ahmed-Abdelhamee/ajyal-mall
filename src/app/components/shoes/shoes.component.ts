@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { homePhoto } from 'src/app/interfaces/home.interface';
 import { DataService } from 'src/app/services/data.service';
+import * as $ from 'jquery'
 
 @Component({
   selector: 'app-shoes',
   templateUrl: './shoes.component.html',
-  styleUrls: ['./shoes.component.scss']
+  styleUrls: ['./shoes.component.scss', '../z-shared-styles/home-shared-style.scss']
 })
 export class ShoesComponent implements OnInit {
 

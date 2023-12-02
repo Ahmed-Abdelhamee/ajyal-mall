@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { homePhoto } from 'src/app/interfaces/home.interface';
 import { DataService } from 'src/app/services/data.service';
+import * as $ from 'jquery'
 
 @Component({
   selector: 'app-ajyal-mall',
   templateUrl: './ajyal-mall.component.html',
-  styleUrls: ['./ajyal-mall.component.scss']
+  styleUrls: ['./ajyal-mall.component.scss', '../z-shared-styles/home-shared-style.scss']
 })
 export class AjyalMallComponent implements OnInit {
 

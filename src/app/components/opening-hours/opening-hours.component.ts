@@ -5,7 +5,7 @@ import { DataService } from 'src/app/services/data.service';
 @Component({
   selector: 'app-opening-hours',
   templateUrl: './opening-hours.component.html',
-  styleUrls: ['./opening-hours.component.scss']
+  styleUrls: ['./opening-hours.component.scss', '../z-shared-styles/home-shared-style.scss']
 })
 export class OpeningHoursComponent implements OnInit {
 
