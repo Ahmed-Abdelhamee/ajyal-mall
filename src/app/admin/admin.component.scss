@@ -73,12 +73,27 @@ label{
     margin-bottom: 0px;
     font-weight: 600;
 }
+.dropdown .dropdown-toggle{
+    cursor: pointer;
+}
 .dropdown-item{
     text-align: center;
     border-radius: 5px;
 }
-
+.dropdown-item:hover{
+    background-color: #747474;
+}
+.more-view-open{
+    display: block;
+    animation-name: openMore;
+    animation-duration: 1s;
+}
 // for icons
 svg {
     vertical-align: bottom;
+}
+
+@keyframes openMore {
+    from{opacity: 0;bottom: -30px}
+    to{opacity: 1; bottom: 0px;}
 }

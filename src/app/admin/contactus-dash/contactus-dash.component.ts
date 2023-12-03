@@ -11,7 +11,8 @@ import { DataService } from 'src/app/services/data.service';
 export class ContactusDashComponent implements OnInit {
 
 
-  feedback:sendFeedback[]=[]
+  feedback:sendFeedback[]=[];
+  del_ID:string="";
 
   constructor(private dataSrv:DataService) {
     dataSrv.getFeedback().subscribe(data =>{
@@ -22,5 +23,17 @@ export class ContactusDashComponent implements OnInit {
    }
 
   ngOnInit(): void {
+  }
+
+  del(item:any){
+    this.dataSrv.getFeedback().subscribe(data =>{
+      for (const key in data) {
+        if(data[key].id==item.id){
+          this.del_ID=data[key].id;
+          this.dataSrv.delete("feedback",key);
+          break;
+        }
+      }
+    })
   }
 }

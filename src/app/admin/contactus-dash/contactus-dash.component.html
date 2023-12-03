@@ -7,6 +7,7 @@
             <p><span>Phone : </span>{{item.phone}}</p>
             <p><span>id : </span>{{item.id}}</p>
             <textarea name="msg" id="msg" cols="30" rows="5" [value]="item.msg"></textarea>
+            <button class="btn btn-danger" (click)="del(item)">delete</button>
         </div>
     </div>
 </div>

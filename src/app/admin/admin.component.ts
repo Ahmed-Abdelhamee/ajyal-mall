@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as $ from "jquery"
 
 @Component({
   selector: 'app-admin',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 export class AdminComponent implements OnInit {
   
   hideSideBar:boolean=true;
+  checkMoreOpen:string="close"
 
   constructor(private route:Router, private http:HttpClient) { 
     if(sessionStorage.getItem("Admin")!="AdminisTrue"){
@@ -19,6 +21,16 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
+  openMore(){
+    if(this.checkMoreOpen=="close"){
+      $(".dropdown-menu-dark").addClass("more-view-open")
+      this.checkMoreOpen="open"
+    }else{
+      $(".dropdown-menu-dark").removeClass("more-view-open")
+      this.checkMoreOpen="close"
+    }
+  }
 }
