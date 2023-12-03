@@ -83,6 +83,11 @@ label{
 .dropdown-item:hover{
     background-color: #747474;
 }
+.dropdown-item::selection,
+.nav-link::selection,
+.dropdown-toggle strong::selection{
+    background: none;
+}
 .more-view-open{
     display: block;
     animation-name: openMore;
