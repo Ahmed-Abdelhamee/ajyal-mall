@@ -1,14 +1,14 @@
 export const environment = {
   firebase: {
-    projectId: 'ajyal-mall',
-    appId: '1:938733099682:web:94988236e5b234948295fb',
-    databaseURL: 'https://ajyal-mall-default-rtdb.firebaseio.com',
-    storageBucket: 'ajyal-mall.appspot.com',
+    projectId: 'ajyal-mall-7a83a',
+    appId: '1:1039512606383:web:12b8d18c4d1e136260665a',
+    databaseURL: 'https://ajyal-mall-7a83a-default-rtdb.firebaseio.com',
+    storageBucket: 'ajyal-mall-7a83a.appspot.com',
     locationId: 'us-central',
-    apiKey: 'AIzaSyAIfz60x291lP2X6UStBEqWQSDIxyklC9o',
-    authDomain: 'ajyal-mall.firebaseapp.com',
-    messagingSenderId: '938733099682',
-    measurementId: 'G-ZJ47CL8BEF',
+    apiKey: 'AIzaSyBLATnGQeFK-HBdarbaNZcUEpXxTsUvUPI',
+    authDomain: 'ajyal-mall-7a83a.firebaseapp.com',
+    messagingSenderId: '1039512606383',
+    measurementId: 'G-LK5TTWP8EC',
   },
   production: true
 };
