@@ -2,7 +2,7 @@
 <div class="col-12 header " *ngIf="display">
     <nav class="navbar navbar-expand-lg navbar-light ">
         <a class="navbar-brand" href="#"><img class="logo" src="assets/logo.png" alt="اجيال لوجو"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" (click)="removeStrechOnDropdownList()" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse bg-blue" id="navbarSupportedContent">
@@ -34,7 +34,7 @@
                 more
               </a>
               <ul class="dropdown-menu bg-blue" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item frist-dropdown-item" routerLink="abairaq-tower" [routerLinkActive]="'active'">Ajyal tower</a></li>
+                <li><a class="dropdown-item frist-dropdown-item" routerLink="ajyal-tower" [routerLinkActive]="'active'">Ajyal tower</a></li>
                 <li><a class="dropdown-item" routerLink="about" [routerLinkActive]="'active'">About Ajyal</a></li>
                 <li><a class="dropdown-item" routerLink="opening-hours" [routerLinkActive]="'active'">OPENING HOURS</a></li>
                 <li><a class="dropdown-item drop-item-edit" routerLink="mall-location" [routerLinkActive]="'active'">MALL LOCATION</a></li>

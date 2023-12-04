@@ -9,7 +9,7 @@ import { NavigationEnd, Router } from '@angular/router';
 export class AppComponent {
   title = 'ajyal-mall';
   
-  websitePages=["","home","clothing" ,"shoes" ,"accessories" ,"perfumes","dining","cafes" ,'entertainment',"about","opening-hours","mall-location","store-location","contact-us","abairaq-tower" ,"albiraq-0-admin-0-mall"]
+  websitePages=["","home","clothing" ,"shoes" ,"accessories" ,"perfumes","dining","cafes" ,'entertainment',"about","opening-hours","mall-location","store-location","contact-us","ajyal-tower" ,"ajyal-0-admin-0-mall"]
 
   showHeader:boolean=true;
   constructor(private route:Router){
