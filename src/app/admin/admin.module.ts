@@ -38,7 +38,7 @@ import { ChildCompViewComponent } from './child-comp-view/child-comp-view.compon
     PerfumesDashComponent,
     ShoesDashComponent,
     StoreLocationDashComponent,
-    ChildCompViewComponent
+    ChildCompViewComponent,
   ],
   imports: [
     CommonModule,

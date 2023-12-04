@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Auth } from '@angular/fire/auth';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AdminAuthService } from 'src/app/services/admin-auth.service';
 
 @Component({
   selector: 'app-dash-login',
@@ -9,7 +11,9 @@ import { Router } from '@angular/router';
 })
 export class DashLoginComponent implements OnInit {
 
-  constructor(private fb:FormBuilder ,private route:Router) { 
+  error:boolean=false;
+  
+  constructor(private fb:FormBuilder ,private route:Router,private auth:AdminAuthService) { 
   }
 
   login=this.fb.group({
@@ -17,18 +21,13 @@ export class DashLoginComponent implements OnInit {
     pass:["",Validators.required],
   })
 
-  error:boolean=false;
-
   ngOnInit(): void {
   }
 
   submit(){
-    if(this.login.get("email")?.value=="admin@admin" && this.login.get("pass")?.value=="admin2023"){
-      sessionStorage.setItem("Admin","AdminisTrue");
-      this.route.navigate(["/admin/home"])
-    }else{
-      sessionStorage.setItem("Admin","isFalse")
-      this.error=true;
-    }
+    this.auth.login(this.login.value);
+    setTimeout(() => {
+      this.error=this.auth.loginAdminError;
+    }, 300);
   }
 }

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AdminAuthService } from 'src/app/services/admin-auth.service';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -23,7 +24,6 @@ export class ShoesDashComponent implements OnInit {
   Basic_part_of_control:string="";
   action_Will_Be_Done:string="";
   type_of_data_in_part:string="";
-  viewController:string="shoes";
   uploadingImg:string="null";
   uploadingCarasoul:string="null";
   // for check update
@@ -39,8 +39,8 @@ export class ShoesDashComponent implements OnInit {
     id:[new Date().getTime()]
   })
 
-  constructor(private route:Router,private fb:FormBuilder , private dataServ:DataService , private http:HttpClient, private firestorage:AngularFireStorage) { 
-    if(sessionStorage.getItem("Admin")!="AdminisTrue"){
+  constructor(private route:Router,private fb:FormBuilder ,private auth:AdminAuthService , private dataServ:DataService , private http:HttpClient, private firestorage:AngularFireStorage) { 
+    if(sessionStorage.getItem("Admin")!=auth.AdminUserID){
       route.navigate(["/admin/dash-login"])
     }
   }
@@ -203,8 +203,6 @@ export class ShoesDashComponent implements OnInit {
       })
     }
   }
-
-
   // --------------------------------------------  upload photos -----------------------------------------
 
   // funcion to upload img file and get image url   ---- for shoes carasoul -------

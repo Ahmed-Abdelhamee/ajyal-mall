@@ -35,6 +35,7 @@ import { AdminModule } from './admin/admin.module';
 import { RouterModule } from '@angular/router';
 import { DirDirective } from './directives/dir.directive';
 import { UrlSafePipe } from './pipes/url-safe.pipe';
+import { provideAuth,getAuth } from '@angular/fire/auth';
 
 
 @NgModule({
@@ -74,7 +75,8 @@ import { UrlSafePipe } from './pipes/url-safe.pipe';
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideDatabase(() => getDatabase()),
-    provideStorage(() => getStorage())
+    provideStorage(() => getStorage()),
+    provideAuth(() => getAuth())
   ],
   providers: [
       // write this special code for upload img 

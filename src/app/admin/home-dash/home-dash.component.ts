@@ -4,6 +4,7 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { homePhoto } from 'src/app/interfaces/home.interface';
+import { AdminAuthService } from 'src/app/services/admin-auth.service';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -42,8 +43,8 @@ homeImg=this.fb.group({
 })
 
 
-constructor(private route:Router,private fb:FormBuilder , private dataServ:DataService , private http:HttpClient, private firestorage:AngularFireStorage) { 
-  if(sessionStorage.getItem("Admin")!="AdminisTrue"){
+constructor(private route:Router,private fb:FormBuilder ,private auth:AdminAuthService , private dataServ:DataService , private http:HttpClient, private firestorage:AngularFireStorage) { 
+  if(sessionStorage.getItem("Admin")!=auth.AdminUserID){
     route.navigate(["/admin/dash-login"])
   }
 }

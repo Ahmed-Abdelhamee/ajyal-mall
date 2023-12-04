@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as $ from "jquery"
+import { AdminAuthService } from '../services/admin-auth.service';
 
 @Component({
   selector: 'app-admin',
@@ -13,8 +14,8 @@ export class AdminComponent implements OnInit {
   hideSideBar:boolean=true;
   checkMoreOpen:string="close"
 
-  constructor(private route:Router, private http:HttpClient) { 
-    if(sessionStorage.getItem("Admin")!="AdminisTrue"){
+  constructor(private route:Router, private http:HttpClient, private auth:AdminAuthService) { 
+    if(sessionStorage.getItem("Admin")!=auth.AdminUserID){
       this.route.navigate(["/not-found"])
       this.hideSideBar=false;
     }
