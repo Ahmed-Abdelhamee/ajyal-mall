@@ -16,6 +16,7 @@ import { AccessoiresComponent } from './components/accessoires/accessoires.compo
 import { StoreLocatoinComponent } from './components/store-locatoin/store-locatoin.component';
 import { AjyalMallComponent } from './components/ajyal-mall/ajyal-mall.component';
 import { HomeComponent } from './components/home/home.component';
+import { AdminGardGuard } from './services/admin-gard.guard';
 
 const routes: Routes = [
   {path:"" , component: HomeComponent},

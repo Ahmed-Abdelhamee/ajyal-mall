@@ -20,15 +20,11 @@ export class AdminAuthService {
   // }
 
   login(Admin:any){
-    let x=signInWithEmailAndPassword(this.auth,Admin.email,Admin.pass).then((user)=>{
+     return signInWithEmailAndPassword(this.auth,Admin.email,Admin.pass).then((user)=>{
       // this.AdminUserID = user.user.refreshToken;
-      this.AdminUserID = user.user.uid;
-      this.loginAdminError=false;
-      sessionStorage.setItem("Admin",this.AdminUserID);
+      // this.AdminUserID = user.user.uid;
+      sessionStorage.setItem("Admin","you is admin");
       this.route.navigate(["/admin/home"])
-    }).catch(()=>{
-        sessionStorage.setItem("Admin","isFalse")
-        this.loginAdminError=true;
-      })
+    })
   }
 }

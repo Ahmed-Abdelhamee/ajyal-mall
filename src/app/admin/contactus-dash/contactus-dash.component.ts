@@ -17,9 +17,6 @@ export class ContactusDashComponent implements OnInit {
   del_ID:string="";
 
   constructor(private dataSrv:DataService ,private auth:AdminAuthService ,private route:Router) {
-    if(sessionStorage.getItem("Admin")!=auth.AdminUserID){
-      route.navigate(["/admin/dash-login"])
-    }
     dataSrv.getFeedback().subscribe(data =>{
       for (const key in data) {
         this.feedback.push(data[key])

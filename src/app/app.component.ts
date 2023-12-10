@@ -15,7 +15,7 @@ export class AppComponent {
   constructor(private route:Router){
     route.events.subscribe( val =>{
       if( val instanceof NavigationEnd){
-        if(val.url.split("/").includes('admin') || val.url.endsWith("albiraq-0-admin-0-mall") || !this.websitePages.includes(val.url.split("/").pop()!)){
+        if(val.url.split("/").includes('admin') || val.url.endsWith("ajyal-0-admin-0-mall") || !this.websitePages.includes(val.url.split("/").pop()!)){
           this.showHeader=false;
         }else{
           this.showHeader=true;

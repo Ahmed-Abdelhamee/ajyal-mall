@@ -34,7 +34,7 @@ const routes: Routes = [
       {path:"accessories",component:AccessoiresDashComponent ,canActivate:[AdminGardGuard]},
       {path:"perfumes",component:PerfumesDashComponent ,canActivate:[AdminGardGuard]},
       {path:"openning-hours",component:OpeningHoursDashComponent ,canActivate:[AdminGardGuard]},
-      {path:"Albairaq-tower",component:AjyalTowerDashComponent ,canActivate:[AdminGardGuard]},
+      {path:"Ajyal-tower",component:AjyalTowerDashComponent ,canActivate:[AdminGardGuard]},
     ]
   }
 ];

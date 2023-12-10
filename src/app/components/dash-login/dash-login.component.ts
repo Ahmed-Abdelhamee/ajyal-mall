@@ -25,9 +25,9 @@ export class DashLoginComponent implements OnInit {
   }
 
   submit(){
-    this.auth.login(this.login.value);
-    setTimeout(() => {
-      this.error=this.auth.loginAdminError;
-    }, 300);
+    this.auth.login(this.login.value).catch(()=>{
+      sessionStorage.setItem("Admin","is False not Admin")
+      this.error=true;
+    });
   }
 }

@@ -15,7 +15,7 @@ export class AdminComponent implements OnInit {
   checkMoreOpen:string="close"
 
   constructor(private route:Router, private http:HttpClient, private auth:AdminAuthService) { 
-    if(sessionStorage.getItem("Admin")!=auth.AdminUserID){
+    if(sessionStorage.getItem("Admin")!="you is admin"){
       this.route.navigate(["/not-found"])
       this.hideSideBar=false;
     }

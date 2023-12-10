@@ -44,9 +44,7 @@ homeImg=this.fb.group({
 
 
 constructor(private route:Router,private fb:FormBuilder ,private auth:AdminAuthService , private dataServ:DataService , private http:HttpClient, private firestorage:AngularFireStorage) { 
-  if(sessionStorage.getItem("Admin")!=auth.AdminUserID){
-    route.navigate(["/admin/dash-login"])
-  }
+  
 }
 
 ngOnInit(): void {

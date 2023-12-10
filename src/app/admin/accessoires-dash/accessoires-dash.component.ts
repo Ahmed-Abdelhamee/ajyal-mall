@@ -38,9 +38,6 @@ export class AccessoiresDashComponent implements OnInit {
   })
 
   constructor(route:Router,private fb:FormBuilder ,private auth:AdminAuthService , private dataServ:DataService , private firestorage:AngularFireStorage) { 
-    if(sessionStorage.getItem("Admin")!=auth.AdminUserID){
-      route.navigate(["/admin/dash-login"])
-    }
   }
 
   ngOnInit(): void {
