@@ -33,7 +33,7 @@ const routes: Routes = [
   {path:"mall-location" , component:MallLocationComponent},
   {path:"store-location" , component:StoreLocatoinComponent},
   {path:"contact-us" , component:ContactUsComponent},
-  {path:"ajyal-tower" , component: AjyalMallComponent},
+  // {path:"ajyal-tower" , component: AjyalMallComponent}, // this page is deleted  ->  based on client request 
   {path:"ajyal-0-admin-0-mall" , component: DashLoginComponent},
   {path:"**" , component: ErrorComponent}
 ];

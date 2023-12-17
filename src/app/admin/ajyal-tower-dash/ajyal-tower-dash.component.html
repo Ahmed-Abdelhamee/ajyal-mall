@@ -1,6 +1,11 @@
 
+
+
+<!-- ---------------------------------------  this page is deleted  ->  based on client request  ------------------------------------------ -->
+
+<!-- 
 <div class="col-12 content">
-    <!-- ----- ajyalTower ------- -->
+    -------------------------------------------- ajyalTower -----------------------------------------
     <div class="col-12">
       <div class="d-flex justify-content-center">
         <h1 class="part-title">ajyal Tower part </h1>
@@ -10,7 +15,7 @@
         <div class="btn btn-info text-light" (click)="openPart('table data','ajyalTower-products','')">show products</div>
         <div class="btn btn-info text-light" (click)="openPart('table data','ajyalTower-carsouel','')">show carsouel</div>
       </div>
-      <!-- promo show on edit any data  -->
+       ----------------------------------- promo show on edit any data  -----------------------------------
       <div class="col-12 update-View" *ngIf="action_Will_Be_Done=='edit'">
         <div class="row check-data text-center">
           <div class=" card">
@@ -21,10 +26,10 @@
           </div>
         </div>
       </div>
-      <!-- ajyalTower forms -->
+      ----------------------------------------- ajyalTower forms -----------------------------------------
       <div *ngIf="Basic_part_of_control=='form'">
         <div class="col-12 dash-content p-2" *ngIf="action_Will_Be_Done == 'add' || (action_Will_Be_Done== 'edit' && type_of_data_in_part=='ajyalTower-carsouel')">
-          <!-- carsouel form -->
+          ----------------------------------------- carsouel form -----------------------------------------
           <form [formGroup]="ajyalTowerImg" class="card p-2" (ngSubmit)="sendCarasoul(type_of_data_in_part,action_Will_Be_Done)" >
               <label for="logo">Ajyal Tower Carasoul Image : </label>
               <input type="file" accept=".jpg , .png , .jpeg , .webp "  class="form-control" id="logo"  (change)=" uploadCarasoul($event,'ajyalTower-carsouel')">
@@ -34,7 +39,7 @@
               </div>
           </form>
         </div>
-        <!-- product form -->
+        ----------------------------------------- product form -----------------------------------------
         <div class="col-12 dash-content p-2" *ngIf="action_Will_Be_Done == 'add' || (action_Will_Be_Done== 'edit' && type_of_data_in_part=='ajyalTower-products')">
           <form [formGroup]="ajyalTowerImg" class="card p-2" (ngSubmit)="sendProducts(type_of_data_in_part,action_Will_Be_Done)" >
               <label for="logo2">ajyalTower Product Image : </label>
@@ -51,7 +56,7 @@
         </div>
       </div>
 
-      <!-- data table -->
+      ----------------------------------------- data table -----------------------------------------
       <div class="col-12 table-div" *ngIf="Basic_part_of_control=='table data' || showDeleteDiv">
         <p class="part-view" *ngIf="!showDeleteDiv">{{parttext}}</p>
         <table class="table table-striped text-center" *ngIf="!showDeleteDiv">
@@ -76,7 +81,7 @@
           </tbody>
         </table>
 
-        <!-- deleted item div -->
+        ----------------------------------------- deleted item div -----------------------------------------
         <div class="col-12 delete-show" *ngIf="showDeleteDiv">
           <div class="row check-data">
             <div class=" card">
@@ -97,4 +102,4 @@
   
   
   
-  
+   -->
