@@ -104,6 +104,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "ajyal-mall:build:production",
+            "firebaseProject": "ajyal-mall-7a83a",
+            "firebaseHostingSite": "ajyal-mall-7a83a"
+          }
         }
       }
     }

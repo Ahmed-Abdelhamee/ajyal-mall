@@ -79,7 +79,7 @@
         </a>
       </li>
     </ul>
-    <hr>
+    <hr style="margin: 0px;">
     <div class="dropdown">
       <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" (click)="openMore()">
         <img src="assets/logo.png" alt="" width="32" height="32" class="rounded-circle me-2 bg-light">
@@ -94,6 +94,9 @@
         <li><a class="dropdown-item drop-item-edit" routerLink="mall-location"  [routerLinkActive]="'active'">mall location</a></li>
         <li><a class="dropdown-item" routerLink="contactus"  [routerLinkActive]="'active'">contact us</a></li>
       </ul>
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-danger" (click)="logout()">logout</button>
+      </div>
     </div>
 </div>
   

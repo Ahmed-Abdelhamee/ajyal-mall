@@ -100,6 +100,8 @@ export class OpeningHoursDashComponent implements OnInit {
               id:Number(this.updateObject.id)
             })
             this.dataServ.create(this.openningImg.value,"openningCarasoul",key);
+            if(this.CarasoulURL!="")
+            this.firestorage.storage.refFromURL(this.updateObject.img!).delete()
             break;
           }
         }
@@ -130,6 +132,8 @@ export class OpeningHoursDashComponent implements OnInit {
         for (const key in data) {
           if(this.updateObject.id==data[key].id){
             this.dataServ.create(this.openningImg.value,"openningImages",key);
+            if(this.productURL!="")
+            this.firestorage.storage.refFromURL(this.updateObject.img!).delete()
             break;
           }
         }
@@ -172,6 +176,7 @@ export class OpeningHoursDashComponent implements OnInit {
         for (const key in data) {
           if(item.id==data[key].id){
             this.dataServ.delete("openningCarasoul",key);
+            this.firestorage.storage.refFromURL(this.deletedObject.img!).delete()
             break;
           }
         }
@@ -184,6 +189,7 @@ export class OpeningHoursDashComponent implements OnInit {
         for (const key in data) {
           if(item.id==data[key].id){
             this.dataServ.delete("openningImages",key);
+            this.firestorage.storage.refFromURL(this.deletedObject.img!).delete()
             break;
           }
         }
@@ -200,7 +206,7 @@ export class OpeningHoursDashComponent implements OnInit {
     this.uploadingCarasoul="uploadingCarasoul";
     const file=event.target.files[0];
     if(file){
-      const path=`ajyal/${file.name}${new Date().getTime()}`; // we make name of file in firebase storage 
+      const path=`ajyal/${new Date().getTime()}${file.name}`; // we make name of file in firebase storage 
       const uploadTask = await this.firestorage.upload(path,file)
       const url =await uploadTask.ref.getDownloadURL()
       this.CarasoulURL=url;
@@ -214,7 +220,7 @@ export class OpeningHoursDashComponent implements OnInit {
     this.uploadingImg="uploadingImg";
     const file=event.target.files[0];
     if(file){
-      const path=`ajyal/${file.name}${new Date().getTime()}`; // we make name of file in firebase storage 
+      const path=`ajyal/${new Date().getTime()}${file.name}`; // we make name of file in firebase storage 
       const uploadTask = await this.firestorage.upload(path,file)
       const url =await uploadTask.ref.getDownloadURL()
       this.productURL=url;

@@ -53,7 +53,8 @@
 }
 .carousel-item img{
     height: calc(100vh - 410px);
-}
+}    // object-fit: cover;
+
 .container {
     position: relative;
     padding: 0px;

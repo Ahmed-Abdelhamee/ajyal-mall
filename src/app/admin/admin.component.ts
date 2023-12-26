@@ -34,4 +34,9 @@ export class AdminComponent implements OnInit {
       this.checkMoreOpen="close"
     }
   }
+
+  logout(){
+    sessionStorage.removeItem("Admin");
+    this.route.navigate(["/"])
+  }
 }

@@ -103,6 +103,8 @@ sendCarasouel(edit_control:string,sectionViewController:string){
             id:Number(this.updateObject.id)
           })
           this.dataServ.create(this.homeImg.value,"carasouel",key);
+          if(this.CarasouelURL!="")
+            this.firestorage.storage.refFromURL(this.updateObject.img!).delete()
           break;
         }
       }
@@ -127,6 +129,8 @@ sendProducts(edit_control:string,sectionViewController:string){
       for (const key in data) {
         if(this.updateObject.id==data[key].id){
           this.dataServ.create(this.homeImg.value,"products",key);
+          if(this.productURL!="")
+            this.firestorage.storage.refFromURL(this.updateObject.img!).delete()
           break;
         }
       }
@@ -168,7 +172,8 @@ deleteItem(item:any,sectionViewController:string){
       for (const key in data) {
         if(item.id==data[key].id){
           this.dataServ.delete("carasouel",key);
-          break;
+            this.firestorage.storage.refFromURL(this.deletedObject.img!).delete()
+            break;
         }
       }
     })
@@ -180,7 +185,8 @@ deleteItem(item:any,sectionViewController:string){
         if(item.id==data[key].id){
           console.log(item.id)
           this.dataServ.delete("products",key);
-          break;
+            this.firestorage.storage.refFromURL(this.deletedObject.img!).delete()
+            break;
         }
       }
     })
@@ -195,7 +201,7 @@ async uploadCarasouel(event:any,edit_control:string){
   this.uploadingCarasouel="uploadingCarasouel";
   const file=event.target.files[0];
   if(file){
-    const path=`ajyal/${file.name}${new Date().getTime()}`; // we make name of file in firebase storage 
+    const path=`ajyal/${new Date().getTime()}${file.name}`; // we make name of file in firebase storage 
     const uploadTask = await this.firestorage.upload(path,file)
     const url =await uploadTask.ref.getDownloadURL()
     this.CarasouelURL=url;
@@ -208,7 +214,7 @@ async uploadImg(event:any,edit_control:string){
   this.uploadingImg="uploadingImg";
   const file=event.target.files[0];
   if(file){
-    const path=`ajyal/${file.name}${new Date().getTime()}`; // we make name of file in firebase storage 
+    const path=`ajyal/${new Date().getTime()}${file.name}`; // we make name of file in firebase storage 
     const uploadTask = await this.firestorage.upload(path,file)
     const url =await uploadTask.ref.getDownloadURL()
     this.productURL=url;

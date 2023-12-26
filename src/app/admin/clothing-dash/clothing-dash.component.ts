@@ -68,6 +68,8 @@ export class ClothingDashComponent implements OnInit {
               id:Number(this.updateObject.id)
             })
             this.dataServ.create(this.clothingImg.value,"clothingCarasoul",key);
+            if(this.CarasoulURL!="")
+            this.firestorage.storage.refFromURL(this.updateObject.img!).delete()
             break;
           }
         }
@@ -101,6 +103,8 @@ export class ClothingDashComponent implements OnInit {
         for (const key in data) {
           if(this.updateObject.id==data[key].id){
             this.dataServ.create(this.clothingImg.value,"clothingImages",key);
+            if(this.productURL!="")
+            this.firestorage.storage.refFromURL(this.updateObject.img!).delete()
             break;
           }
         }
@@ -182,6 +186,7 @@ export class ClothingDashComponent implements OnInit {
         for (const key in data) {
           if(item.id==data[key].id){
             this.dataServ.delete("clothingCarasoul",key);
+            this.firestorage.storage.refFromURL(this.deletedObject.img!).delete()
             break;
           }
         }
@@ -194,6 +199,7 @@ export class ClothingDashComponent implements OnInit {
         for (const key in data) {
           if(item.id==data[key].id){
             this.dataServ.delete("clothingImages",key);
+            this.firestorage.storage.refFromURL(this.deletedObject.img!).delete()
             break;
           }
         }
@@ -210,7 +216,7 @@ export class ClothingDashComponent implements OnInit {
     this.uploadingCarasoul="uploadingCarasoul";
     const file=event.target.files[0];
     if(file){
-      const path=`ajyal/${file.name}${new Date().getTime()}`; // we make name of file in firebase storage 
+      const path=`ajyal/${new Date().getTime()}${file.name}`; // we make name of file in firebase storage 
       const uploadTask = await this.firestorage.upload(path,file)
       const url =await uploadTask.ref.getDownloadURL()
       this.CarasoulURL=url;
@@ -223,7 +229,7 @@ export class ClothingDashComponent implements OnInit {
     this.uploadingImg="uploadingImg";
     const file=event.target.files[0];
     if(file){
-      const path=`ajyal/${file.name}${new Date().getTime()}`; // we make name of file in firebase storage 
+      const path=`ajyal/${new Date().getTime()}${file.name}`; // we make name of file in firebase storage 
       const uploadTask = await this.firestorage.upload(path,file)
       const url =await uploadTask.ref.getDownloadURL()
       this.productURL=url;

@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "default": "ajyal-mall-7a83a",
+    "staging": "ajyal-mall-7a83a"
+  },
+  "targets": {
+    "ajyal-mall-7a83a": {
+      "hosting": {
+        "ajyal-mall": [
+          "ajyal-mall-7a83a"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
